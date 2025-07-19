@@ -1,0 +1,40 @@
+.class-label {
+  transition: 0.4s;
+}
+
+.class-input:focus {
+  box-shadow: 0 0 0 1px #007bff;
+  background: #f2f2f7;
+  border: 1px solid #f2f2f7;
+}
+
+.input-error .class-input {
+  border: 1px solid #f2f2f7;
+  box-shadow: 0 0 0 1px #eb0014;
+  background: #f2f2f7;
+}
+
+.class-input:focus + .class-label,
+.input-error .class-label,
+.input-true .class-label {
+  font-size: 11px;
+  line-height: 150%;
+  top: -16px;
+  left: -2px;
+}
+
+.input-error .class-label {
+  color: #eb0014;
+}
+.class-input:focus + .class-label {
+  color: #007bff;
+}
+.input-true .class-label {
+  color: #545454;
+}
+.input-error .class-input:focus {
+  box-shadow: 0 0 0 1px #007bff;
+}
+.input-error .error-block {
+  display: block;
+}
