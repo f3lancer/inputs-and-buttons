@@ -4,7 +4,6 @@ import { useState } from "react";
 import "./Input.css";
 
 import "@fontsource/roboto/400.css";
-// import "@fontsource/roboto/600.css";
 
 export type InputProps = {
   label: string;
@@ -43,8 +42,7 @@ export const Input: React.FC<InputProps> = ({
         id={`name-${id}`}
         className={`
             class-input 
-            h-[56px]
-            rounded-xl
+            h-[56px] 
             bg-[#F2F2F7]
             border border-[#F2F2F7]
             font-sans
@@ -60,12 +58,9 @@ export const Input: React.FC<InputProps> = ({
             transition 
             duration-400
         `}
-        style={
-          {
-            //   borderWidth: 1,
-            //   height: 56,
-          }
-        }
+        style={{
+          fontFamily: "Roboto",
+        }}
         value={valueInput}
         onChange={(e) => {
           setValue(e.target.value);
