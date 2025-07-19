@@ -4,9 +4,22 @@ import "@fontsource/roboto/600.css";
 
 import "./Button.css";
 
+type ButtonVariant =
+  | "primary"
+  | "secondary"
+  | "outline"
+  | "destructive"
+  | "ghost"
+  | "disabled"
+  | "linck"
+  | "doubleIcon"
+  | "leftIcon"
+  | "rightIcon";
+
 type ButtonProps = {
   disabled?: boolean;
-  variant?: string;
+  // variant?: string;
+  variant: ButtonVariant;
   href?: string;
   children: React.ReactNode;
   leftIcon?: React.ReactNode;
@@ -16,7 +29,7 @@ type ButtonProps = {
 
 export const Button: React.FC<ButtonProps> = ({
   disabled = false,
-  variant,
+  variant = "primary",
   href,
   children,
   leftIcon,

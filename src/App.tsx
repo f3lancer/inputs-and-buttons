@@ -28,7 +28,7 @@ function App() {
     <>
       <div style={{ padding: 40 }}>
         <div style={{ padding: 10 }}>
-          <Button variant="primary">Primary </Button>
+          <Button variant="primary">Primary</Button>
         </div>
         <div style={{ padding: 10 }}>
           <Button disabled={false} variant="secondary">
@@ -51,7 +51,9 @@ function App() {
           </Button>
         </div>
         <div style={{ padding: 10 }}>
-          <Button disabled={true}>Disabled</Button>
+          <Button disabled={true} variant="disabled">
+            Disabled
+          </Button>
         </div>
         <div style={{ padding: 10 }}>
           <Button disabled={false} variant="linck" href="#">
