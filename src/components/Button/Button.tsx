@@ -57,7 +57,7 @@ export const Button: React.FC<ButtonProps> = ({
   if (href) {
     return (
       <a
-        className={`font-semibold button ${variant} h-[56px] text-base leading-[1.5] text-center cursor-pointer w-full bg-[#b6a2a2] rounded-[13px] flex flex items-center justify-center bg-[#f2f2f7]`}
+        className={`font-semibold btn-root ${variant} h-[56px] text-base leading-[1.5] text-center cursor-pointer w-full bg-[#b6a2a2] rounded-[13px] flex flex items-center justify-center bg-[#f2f2f7]`}
         href={href}
         aria-disabled={disabled || undefined}
         tabIndex={disabled ? -1 : undefined}
@@ -69,7 +69,7 @@ export const Button: React.FC<ButtonProps> = ({
   }
   return (
     <button
-      className={`font-semibold button relative ${variant} h-[56px] text-base leading-[1.5] text-center cursor-pointer w-full bg-[#b6a2a2] rounded-[13px] font-roboto`}
+      className={`font-semibold btn-root relative ${variant} h-[56px] text-base leading-[1.5] text-center cursor-pointer w-full bg-[#b6a2a2] rounded-[13px] font-roboto`}
       disabled={disabled}
     >
       {content}

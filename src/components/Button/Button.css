@@ -1,42 +1,42 @@
-button.button {
+button.btn-root {
   height: 56px;
   font-family: "roboto";
 }
-a.button {
+a.btn-root {
   font-family: "roboto";
 }
-button.button.primary {
+button.btn-root.primary {
   background: #007bff;
   color: #fff;
 }
-button.button.secondary {
+button.btn-root.secondary {
   background: #f2f2f7;
   color: #000;
 }
-button.button.outline {
+button.btn-root.outline {
   border: 2px solid #000;
   background: #fff;
   color: #000;
 }
-button.button.destructive {
+button.btn-root.destructive {
   background: #eb0014;
   color: #fff;
 }
-button.button.ghost {
+button.btn-root.ghost {
   background: transparent;
   color: #000;
 }
-button.button.ghost {
+button.btn-root.ghost {
   background: transparent;
   color: #000;
 }
-button.button.doubleIcon,
-button.button.leftIcon,
-button.button.rightIcon {
+button.btn-root.doubleIcon,
+button.btn-root.leftIcon,
+button.btn-root.rightIcon {
   background: #f2f2f7;
   color: #000;
 }
-button.button.undefined {
+button.btn-root.undefined {
   background: #f2f2f7;
   color: rgba(0, 0, 0, 0.5);
   cursor: auto;
