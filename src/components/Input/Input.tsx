@@ -10,6 +10,7 @@ export type InputProps = {
   helperText?: string;
   errorText?: string;
   value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export const Input: React.FC<InputProps> = ({
@@ -17,14 +18,12 @@ export const Input: React.FC<InputProps> = ({
   helperText,
   errorText,
   value,
+  onChange,
 }) => {
-  // const [valueInput, setValue] = useState("");
   const [valueInput, setValue] = useState(value ?? "");
 
   const [touched, setTouched] = useState(false);
   const id = useId();
-
-  // let inputClass = "";
 
   React.useEffect(() => {
     setValue(value ?? "");
@@ -76,6 +75,9 @@ export const Input: React.FC<InputProps> = ({
         onChange={(e) => {
           setValue(e.target.value);
           setTouched(false);
+          if (typeof onChange === "function") {
+            onChange(e);
+          }
         }}
         onBlur={() => setTouched(true)}
       />
