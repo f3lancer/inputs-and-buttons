@@ -9,24 +9,35 @@ export type InputProps = {
   label: string;
   helperText?: string;
   errorText?: string;
+  value?: string;
 };
 
 export const Input: React.FC<InputProps> = ({
   label,
   helperText,
   errorText,
+  value,
 }) => {
-  const [valueInput, setValue] = useState("");
+  // const [valueInput, setValue] = useState("");
+  const [valueInput, setValue] = useState(value ?? "");
+
   const [touched, setTouched] = useState(false);
   const id = useId();
 
-  let inputClass = "";
+  // let inputClass = "";
 
-  if (touched && valueInput.length > 0) {
+  React.useEffect(() => {
+    setValue(value ?? "");
+  }, [value]);
+
+  const hasValue = valueInput.length > 0;
+
+  let inputClass = hasValue ? "input-true" : "";
+  if (touched && hasValue) {
     if (valueInput.length < 2) {
-      inputClass = "input-error";
+      inputClass += " input-error";
     } else {
-      inputClass = "input-true";
+      inputClass += " input-true";
     }
   }
 
