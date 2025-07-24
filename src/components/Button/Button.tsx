@@ -16,17 +16,33 @@ type ButtonVariant =
   | "leftIcon"
   | "rightIcon";
 
-type ButtonProps = {
-  disabled?: boolean;
-  // variant?: string;
+// type ButtonProps = {
+//   disabled?: boolean;
+//   variant: ButtonVariant;
+//   href?: string;
+//   children: React.ReactNode;
+//   leftIcon?: React.ReactNode;
+//   rightIcon?: React.ReactNode;
+//   icons?: React.ReactNode;
+// };
+
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   variant: ButtonVariant;
   href?: string;
-  children: React.ReactNode;
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
   icons?: React.ReactNode;
 };
 
+// export const Button: React.FC<ButtonProps> = ({
+//   disabled = false,
+//   variant = "primary",
+//   href,
+//   children,
+//   leftIcon,
+//   rightIcon,
+//   icons,
+// }) => {
 export const Button: React.FC<ButtonProps> = ({
   disabled = false,
   variant = "primary",
@@ -35,7 +51,9 @@ export const Button: React.FC<ButtonProps> = ({
   leftIcon,
   rightIcon,
   icons,
+  ...props
 }) => {
+  const { className, ...restProps } = props;
   const iconArray = icons ? React.Children.toArray(icons) : [];
   const content = (
     <>
@@ -66,11 +84,26 @@ export const Button: React.FC<ButtonProps> = ({
       )}
     </>
   );
+  const ClassNameFref = [
+    variant,
+    `font-semibold btn-root h-[56px] text-base leading-[1.5] text-center cursor-pointer w-full bg-[#b6a2a2] rounded-[13px] flex flex items-center justify-center bg-[#f2f2f7]`,
+    props.className,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  const ClassNameButton = [
+    variant,
+    "font-semibold btn-root relative h-[56px] text-base leading-[1.5] text-center cursor-pointer w-full bg-[#b6a2a2] rounded-[13px] font-roboto",
+    props.className,
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   if (href) {
     return (
       <a
-        className={`font-semibold btn-root ${variant} h-[56px] text-base leading-[1.5] text-center cursor-pointer w-full bg-[#b6a2a2] rounded-[13px] flex flex items-center justify-center bg-[#f2f2f7]`}
+        className={ClassNameFref}
         href={href}
         aria-disabled={disabled || undefined}
         tabIndex={disabled ? -1 : undefined}
@@ -81,10 +114,7 @@ export const Button: React.FC<ButtonProps> = ({
     );
   }
   return (
-    <button
-      className={`font-semibold btn-root relative ${variant} h-[56px] text-base leading-[1.5] text-center cursor-pointer w-full bg-[#b6a2a2] rounded-[13px] font-roboto`}
-      disabled={disabled}
-    >
+    <button className={ClassNameButton} disabled={disabled} {...restProps}>
       {content}
     </button>
   );
