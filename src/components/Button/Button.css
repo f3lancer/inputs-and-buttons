@@ -41,3 +41,8 @@ button.btn-root.undefined {
   color: rgba(0, 0, 0, 0.5);
   cursor: auto;
 }
+button.btn-root.disabled {
+  background: rgba(242, 242, 247, 1);
+  color: rgba(0, 0, 0, 0.5);
+  cursor: auto;
+}
