@@ -19,6 +19,7 @@ export const Input: React.FC<InputProps> = ({
   errorText,
   value,
   onChange,
+  ...props
 }) => {
   const [valueInput, setValue] = useState(value ?? "");
 
@@ -80,6 +81,7 @@ export const Input: React.FC<InputProps> = ({
           }
         }}
         onBlur={() => setTouched(true)}
+        {...props}
       />
       <label
         htmlFor={`name-${id}`}

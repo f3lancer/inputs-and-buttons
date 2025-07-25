@@ -16,16 +16,6 @@ type ButtonVariant =
   | "leftIcon"
   | "rightIcon";
 
-// type ButtonProps = {
-//   disabled?: boolean;
-//   variant: ButtonVariant;
-//   href?: string;
-//   children: React.ReactNode;
-//   leftIcon?: React.ReactNode;
-//   rightIcon?: React.ReactNode;
-//   icons?: React.ReactNode;
-// };
-
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   variant: ButtonVariant;
   href?: string;
@@ -34,15 +24,6 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   icons?: React.ReactNode;
 };
 
-// export const Button: React.FC<ButtonProps> = ({
-//   disabled = false,
-//   variant = "primary",
-//   href,
-//   children,
-//   leftIcon,
-//   rightIcon,
-//   icons,
-// }) => {
 export const Button: React.FC<ButtonProps> = ({
   disabled = false,
   variant = "primary",
