@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { ChevronUpIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
-import "./Select.css";
+import { ChevronUpIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
+import React, { useState } from 'react';
+import './Select.css';
 
 type SelectProps = {
   options: string[];
@@ -15,14 +15,14 @@ export const Select: React.FC<SelectProps> = ({
   label,
   Text,
 }) => {
-  const [selected, setSelected] = useState("");
+  const [selected, setSelected] = useState('');
   const [open, setOpen] = useState(false);
 
   return (
     <div className="relative flex flex-col gap-[7px] ">
       <div
         className={`class-select h-[56px] bg-[#F2F2F7] rounded-[13px] border px-4 py-1.5 text-left ${
-          open ? "class-select--open border-[#007bff]" : "border-[#F2F2F7]"
+          open ? 'class-select--open border-[#007bff]' : 'border-[#F2F2F7]'
         }  cursor-pointer`}
         onClick={() => setOpen(!open)}
         tabIndex={0}
@@ -34,7 +34,7 @@ export const Select: React.FC<SelectProps> = ({
         <div
           className=" font-normal text-base leading-[150%] text-[#000]"
           style={{
-            fontFamily: "Roboto",
+            fontFamily: 'Roboto',
           }}
         >
           {selected || Text}
@@ -66,7 +66,7 @@ export const Select: React.FC<SelectProps> = ({
         )}
       </div>
       <div
-        className={` text-left ml-4 text-[#545454] text-xs leading-[133%] mt-[-7px]`}
+        className={' text-left ml-4 text-[#545454] text-xs leading-[133%] mt-[-7px]'}
       >
         {helperText}
       </div>

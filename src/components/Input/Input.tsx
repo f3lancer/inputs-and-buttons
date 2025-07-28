@@ -1,9 +1,9 @@
-import React from "react";
-import { useId } from "react";
-import { useState } from "react";
-import "./Input.css";
+import React from 'react';
+import { useId } from 'react';
+import { useState } from 'react';
+import './Input.css';
 
-import "@fontsource/roboto/400.css";
+import '@fontsource/roboto/400.css';
 
 export type InputProps = {
   label: string;
@@ -21,23 +21,23 @@ export const Input: React.FC<InputProps> = ({
   onChange,
   ...props
 }) => {
-  const [valueInput, setValue] = useState(value ?? "");
+  const [valueInput, setValue] = useState(value ?? '');
 
   const [touched, setTouched] = useState(false);
   const id = useId();
 
   React.useEffect(() => {
-    setValue(value ?? "");
+    setValue(value ?? '');
   }, [value]);
 
   const hasValue = valueInput.length > 0;
 
-  let inputClass = hasValue ? "input-true" : "";
+  let inputClass = hasValue ? 'input-true' : '';
   if (touched && hasValue) {
     if (valueInput.length < 2) {
-      inputClass += " input-error";
+      inputClass += ' input-error';
     } else {
-      inputClass += " input-true";
+      inputClass += ' input-true';
     }
   }
 
@@ -70,13 +70,13 @@ export const Input: React.FC<InputProps> = ({
             duration-400
         `}
         style={{
-          fontFamily: "Roboto",
+          fontFamily: 'Roboto',
         }}
         value={valueInput}
         onChange={(e) => {
           setValue(e.target.value);
           setTouched(false);
-          if (typeof onChange === "function") {
+          if (typeof onChange === 'function') {
             onChange(e);
           }
         }}
@@ -103,12 +103,12 @@ export const Input: React.FC<InputProps> = ({
         {label}
       </label>
       <div
-        className={`error-block text-left ml-[16px] text-[#eb0014] text-[12px] leading-[133%] hidden`}
+        className={'error-block text-left ml-[16px] text-[#eb0014] text-[12px] leading-[133%] hidden'}
       >
         {errorText}
       </div>
       <div
-        className={` text-left ml-[16px] text-[#545454] text-[12px] leading-[133%]`}
+        className={' text-left ml-[16px] text-[#545454] text-[12px] leading-[133%]'}
       >
         {helperText}
       </div>

@@ -1,20 +1,20 @@
-import "./App.css";
-import { Input } from "./components/Input/Input";
-import { Select } from "./components/Select/Select";
-import { Button } from "./components/Button/Button";
 import {
   UsersIcon,
   ChevronRightIcon,
   SignalIcon,
   MusicalNoteIcon,
-} from "@heroicons/react/24/outline";
+} from '@heroicons/react/24/outline';
+
+import { Button } from './components/Button/Button';
+import { Input } from './components/Input/Input';
+import { Select } from './components/Select/Select';
 
 function App() {
   const emails = [
-    "m@mail.com",
-    "m@google.com",
-    "m@support.com",
-    "m@google.com",
+    'm@mail.com',
+    'm@google.com',
+    'm@support.com',
+    'm@google.com',
   ];
 
   return (
@@ -88,7 +88,7 @@ function App() {
           value="value text input"
           label="Name"
           helperText="You need to enter your full name in here."
-          errorText="String must contain at least 2 character(s)"
+          errorText="String must contain at least 2 character(s)."
         />
       </div>
     </>
