@@ -1,9 +1,13 @@
-import React from 'react';
-import { useId } from 'react';
-import { useState } from 'react';
-import './Input.css';
+import React from "react";
+import { useId } from "react";
+import { useState } from "react";
 
-import '@fontsource/roboto/400.css';
+import {
+  inputVariants,
+  labelVariants,
+  hintText,
+  errorTextPrint,
+} from "./inputVariants";
 
 export type InputProps = {
   label: string;
@@ -21,62 +25,49 @@ export const Input: React.FC<InputProps> = ({
   onChange,
   ...props
 }) => {
-  const [valueInput, setValue] = useState(value ?? '');
+  const [valueInput, setValue] = useState(value ?? "");
 
   const [touched, setTouched] = useState(false);
   const id = useId();
 
   React.useEffect(() => {
-    setValue(value ?? '');
+    setValue(value ?? "");
   }, [value]);
 
   const hasValue = valueInput.length > 0;
+  console.log("hasValue", hasValue);
 
-  let inputClass = hasValue ? 'input-true' : '';
+  let inputClass = hasValue ? " has-value" : "";
+  console.log("inputClass", inputClass);
+
   if (touched && hasValue) {
     if (valueInput.length < 2) {
-      inputClass += ' input-error';
+      console.log("input-error", valueInput.length);
+
+      inputClass += " input-error";
     } else {
-      inputClass += ' input-true';
+      console.log("input-true", valueInput.length);
+      inputClass += " input-true";
     }
   }
 
   return (
     <div
       className={` 
+        group
         relative  
-        flex flex-col gap-[7px] 
+        flex flex-col gap-2 
         ${inputClass}
         `}
     >
       <input
         id={`name-${id}`}
-        className={`
-            class-input 
-            h-[56px] 
-            bg-[#F2F2F7]
-            border border-[#F2F2F7]
-            font-sans
-            font-normal
-            text-[16px]
-            leading-[150%]
-            text-[#000]
-            px-4
-            relative
-            rounded-[13px]
-            px-[16px]
-            focus:outline-none
-            transition 
-            duration-400
-        `}
-        style={{
-          fontFamily: 'Roboto',
-        }}
+        className={inputVariants({ state: errorText ? "error" : "default" })}
         value={valueInput}
         onChange={(e) => {
           setValue(e.target.value);
           setTouched(false);
-          if (typeof onChange === 'function') {
+          if (typeof onChange === "function") {
             onChange(e);
           }
         }}
@@ -85,33 +76,14 @@ export const Input: React.FC<InputProps> = ({
       />
       <label
         htmlFor={`name-${id}`}
-        className={`
-        class-label 
-        absolute  
-        top-[0]
-        z-[1] 
-        h-[56px]
-        flex
-        items-center
-        px-[16px]
-        pointer-events-none
-        text-[#545454]
-        transition
-        duration-400
-        `}
+        className={labelVariants({
+          state: errorText ? "error" : "default",
+        })}
       >
         {label}
       </label>
-      <div
-        className={'error-block text-left ml-[16px] text-[#eb0014] text-[12px] leading-[133%] hidden'}
-      >
-        {errorText}
-      </div>
-      <div
-        className={' text-left ml-[16px] text-[#545454] text-[12px] leading-[133%]'}
-      >
-        {helperText}
-      </div>
+      <div className={errorTextPrint()}>{errorText}</div>
+      <div className={hintText()}>{helperText}</div>
     </div>
   );
 };

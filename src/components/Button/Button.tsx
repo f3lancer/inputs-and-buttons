@@ -1,20 +1,18 @@
-import React from 'react';
+import React from "react";
 
-import '@fontsource/roboto/600.css';
-
-import './Button.css';
+import { buttonVariants } from "./buttonVariants";
 
 type ButtonVariant =
-  | 'primary'
-  | 'secondary'
-  | 'outline'
-  | 'destructive'
-  | 'ghost'
-  | 'disabled'
-  | 'linck'
-  | 'doubleIcon'
-  | 'leftIcon'
-  | 'rightIcon';
+  | "primary"
+  | "secondary"
+  | "outline"
+  | "destructive"
+  | "ghost"
+  | "disabled"
+  | "linck"
+  | "doubleIcon"
+  | "leftIcon"
+  | "rightIcon";
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   variant: ButtonVariant;
@@ -26,7 +24,7 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 
 export const Button: React.FC<ButtonProps> = ({
   disabled = false,
-  variant = 'primary',
+  variant = "primary",
   href,
   children,
   leftIcon,
@@ -36,55 +34,33 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
   const { className, ...restProps } = props;
   const iconArray = icons ? React.Children.toArray(icons) : [];
+  const computedClassName = buttonVariants({ variant });
   const content = (
     <>
       {icons ? (
         <>
           {iconArray[0] && (
-            <span className="mr-2 text-xl absolute absolute w-6 h-6 left-4">
-              {iconArray[0]}
-            </span>
+            <span className="inline-block w-[24px]">{iconArray[0]}</span>
           )}
           {children}
           {iconArray[1] && (
-            <span className="ml-2 text-xl absolute absolute w-6 h-6 right-4">
-              {iconArray[1]}
-            </span>
+            <span className="inline-block w-[24px]">{iconArray[1]}</span>
           )}
         </>
       ) : (
         <>
-          <span className="mr-2 text-xl absolute absolute w-6 h-6 left-4">
-            {leftIcon}
-          </span>
+          <span className="inline-block w-[24px]">{leftIcon}</span>
           {children}
-          <span className="ml-2 text-xl absolute absolute w-6 h-6 right-4">
-            {rightIcon}
-          </span>
+          <span className="inline-block w-[24px]">{rightIcon}</span>
         </>
       )}
     </>
   );
-  const ClassNameFref = [
-    variant,
-    'font-semibold btn-root h-[56px] text-base leading-[1.5] text-center cursor-pointer w-full bg-[#b6a2a2] rounded-[13px] flex flex items-center justify-center bg-[#f2f2f7]',
-    className,
-  ]
-    .filter(Boolean)
-    .join(' ');
-
-  const ClassNameButton = [
-    variant,
-    'font-semibold btn-root relative h-[56px] text-base leading-[1.5] text-center cursor-pointer w-full bg-[#b6a2a2] rounded-[13px] font-roboto',
-    className,
-  ]
-    .filter(Boolean)
-    .join(' ');
 
   if (href) {
     return (
       <a
-        className={ClassNameFref}
+        className={computedClassName}
         href={href}
         aria-disabled={disabled || undefined}
         tabIndex={disabled ? -1 : undefined}
@@ -95,7 +71,7 @@ export const Button: React.FC<ButtonProps> = ({
     );
   }
   return (
-    <button className={ClassNameButton} disabled={disabled} {...restProps}>
+    <button className={computedClassName} disabled={disabled} {...restProps}>
       {content}
     </button>
   );

@@ -3,18 +3,18 @@ import {
   ChevronRightIcon,
   SignalIcon,
   MusicalNoteIcon,
-} from '@heroicons/react/24/outline';
+} from "@heroicons/react/24/outline";
 
-import { Button } from './components/Button/Button';
-import { Input } from './components/Input/Input';
-import { Select } from './components/Select/Select';
+import { Button } from "./components/Button/Button";
+import { Input } from "./components/Input/Input";
+import { Select } from "./components/Select/Select";
 
 function App() {
   const emails = [
-    'm@mail.com',
-    'm@google.com',
-    'm@support.com',
-    'm@google.com',
+    "m@mail.com",
+    "m@google.com",
+    "m@support.com",
+    "m@google.com",
   ];
 
   return (

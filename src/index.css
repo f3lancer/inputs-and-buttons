@@ -1,1 +1,16 @@
 @import "tailwindcss";
+@theme {
+  --color-grey: #f2f2f7;
+  --color-dark-grey: #545454;
+  --color-blue: #007bff;
+  --color-red: #eb0014;
+
+  --radius-xl: 14px;
+
+  --height-controlsm: 34px;
+  --height-controllg: 56px;
+
+  --duration-400: 400ms;
+
+  --font-display: "Roboto", "sans-serif";
+}
