@@ -23,7 +23,6 @@
     "build": "tsc -p tsconfig.build.json && pnpm copy-css",
     "copy-css": "cpx \"src/components/**/*.css\" dist/components",
     "lint": "eslint .",
-    "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "vitest",
@@ -32,6 +31,7 @@
   "dependencies": {
     "@fontsource/roboto": "^5.2.6",
     "@heroicons/react": "^2.2.0",
+    "@radix-ui/react-slot": "^1.2.3",
     "class-variance-authority": "^0.7.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"

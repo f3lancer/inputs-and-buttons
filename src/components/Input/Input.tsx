@@ -1,13 +1,6 @@
-import React from "react";
-import { useId } from "react";
-import { useState } from "react";
-
-import {
-  inputVariants,
-  labelVariants,
-  hintText,
-  errorTextPrint,
-} from "./inputVariants";
+import React, { useId, useState } from "react";
+import { FieldMessages } from "../FieldMessages";
+import { inputVariants, labelVariants } from "./inputVariants";
 
 export type InputProps = {
   label: string;
@@ -15,6 +8,8 @@ export type InputProps = {
   errorText?: string;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  id?: string;
+  hasError?: boolean;
 };
 
 export const Input: React.FC<InputProps> = ({
@@ -22,68 +17,45 @@ export const Input: React.FC<InputProps> = ({
   helperText,
   errorText,
   value,
+  id,
   onChange,
+  hasError: hasErrorProp,
   ...props
 }) => {
-  const [valueInput, setValue] = useState(value ?? "");
-
   const [touched, setTouched] = useState(false);
-  const id = useId();
-
-  React.useEffect(() => {
-    setValue(value ?? "");
-  }, [value]);
-
-  const hasValue = valueInput.length > 0;
-  console.log("hasValue", hasValue);
+  const internalId = id ?? useId();
+  const hasValue = (value ?? "").length > 0;
+  const hasError =
+    hasErrorProp ?? (touched && hasValue && (value?.length ?? 0) < 2);
 
   let inputClass = hasValue ? " has-value" : "";
-  console.log("inputClass", inputClass);
-
-  if (touched && hasValue) {
-    if (valueInput.length < 2) {
-      console.log("input-error", valueInput.length);
-
-      inputClass += " input-error";
-    } else {
-      console.log("input-true", valueInput.length);
-      inputClass += " input-true";
-    }
-  }
+  if (hasError) inputClass += " input-error";
+  else if (touched && hasValue) inputClass += " input-true";
 
   return (
-    <div
-      className={` 
-        group
-        relative  
-        flex flex-col gap-2 
-        ${inputClass}
-        `}
-    >
+    <div className={`group relative flex flex-col gap-2 ${inputClass}`}>
       <input
-        id={`name-${id}`}
-        className={inputVariants({ state: errorText ? "error" : "default" })}
-        value={valueInput}
+        id={internalId}
+        className={inputVariants({ state: hasError ? "error" : "default" })}
+        value={value}
         onChange={(e) => {
-          setValue(e.target.value);
           setTouched(false);
-          if (typeof onChange === "function") {
-            onChange(e);
-          }
+          onChange?.(e);
         }}
         onBlur={() => setTouched(true)}
         {...props}
       />
+
       <label
-        htmlFor={`name-${id}`}
+        htmlFor={internalId}
         className={labelVariants({
-          state: errorText ? "error" : "default",
+          state: hasError ? "error" : "default",
         })}
       >
         {label}
       </label>
-      <div className={errorTextPrint()}>{errorText}</div>
-      <div className={hintText()}>{helperText}</div>
+
+      <FieldMessages errorText={errorText} helperText={helperText} />
     </div>
   );
 };

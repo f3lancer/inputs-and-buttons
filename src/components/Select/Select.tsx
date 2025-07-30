@@ -1,9 +1,9 @@
-import { ChevronUpIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import React, { useState } from "react";
+import { FieldMessages } from "../FieldMessages";
 import {
   selectWrapper,
   selectOption,
-  helperTextHere,
   iconStyle,
   selectOptionSkin,
   selectedTextStyle,
@@ -14,46 +14,43 @@ type SelectProps = {
   options: string[];
   label: string;
   helperText: string;
-  Text: string;
+  value: string;
+  onChange?: (value: string) => void;
 };
 
 export const Select: React.FC<SelectProps> = ({
   options,
   helperText,
   label,
-  Text,
+  value,
+  onChange,
 }) => {
-  const [selected, setSelected] = useState("");
-  const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="relative flex flex-col gap-[7px] ">
       <div
-        className={selectWrapper({ open: open ? true : false })}
-        onClick={() => setOpen(!open)}
+        className={selectWrapper({ open: isOpen })}
+        onClick={() => setIsOpen(!isOpen)}
         tabIndex={0}
-        onBlur={() => setOpen(false)}
+        onBlur={() => setIsOpen(false)}
       >
         <div className={labelStyle()}>{label}</div>
-        <div className={selectedTextStyle()}>{selected || Text}</div>
+        <div className={selectedTextStyle()}>{value}</div>
         <div className="absolute right-4 top-4">
-          {open ? (
-            <ChevronUpIcon className={iconStyle()} />
-          ) : (
-            <ChevronDownIcon className={iconStyle()} />
-          )}
+          <ChevronDownIcon className={iconStyle({ open: isOpen })} />
         </div>
       </div>
       <div className="relative">
-        {open && (
+        {isOpen && (
           <div className={selectOptionSkin()}>
             {options.map((opt) => (
               <div
                 key={opt}
                 className={selectOption()}
                 onMouseDown={() => {
-                  setSelected(opt);
-                  setOpen(false);
+                  setIsOpen(false);
+                  onChange?.(opt);
                 }}
               >
                 {opt}
@@ -62,7 +59,7 @@ export const Select: React.FC<SelectProps> = ({
           </div>
         )}
       </div>
-      <div className={helperTextHere()}>{helperText}</div>
+      <FieldMessages helperText={helperText} />
     </div>
   );
 };

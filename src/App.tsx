@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import {
   UsersIcon,
   ChevronRightIcon,
@@ -17,9 +18,36 @@ function App() {
     "m@google.com",
   ];
 
+  const [name, setName] = useState("");
+  const hasError = name.length > 0 && name.length < 2;
+
+  const [selectedText, setTextBefor] = useState("");
+
+  useEffect(() => {
+    setName("Test text bla bla bla");
+    setTextBefor("Test Select");
+  }, []);
+
   return (
     <>
       <div style={{ padding: 40 }}>
+        <div style={{ padding: 40 }}>
+          <Select
+            options={emails}
+            helperText="You need to enter your full name in here."
+            label="Name"
+            value={selectedText}
+            onChange={(val) => setTextBefor(val)}
+          />
+          <Input
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            label="Name"
+            helperText="You need to enter your full name."
+            errorText={hasError ? "Must be at least 2 characters" : ""}
+            hasError={hasError}
+          />
+        </div>
         <div style={{ padding: 10 }}>
           <Button variant="primary">Primary</Button>
         </div>
@@ -76,20 +104,6 @@ function App() {
             Right Icon Button text
           </Button>
         </div>
-        <Select
-          options={emails}
-          helperText="You need to enter your full name in here."
-          label="Name"
-          Text="Enter your name"
-        />
-      </div>
-      <div style={{ padding: 40 }}>
-        <Input
-          value="value text input"
-          label="Name"
-          helperText="You need to enter your full name in here."
-          errorText="String must contain at least 2 character(s)."
-        />
       </div>
     </>
   );

@@ -1,6 +1,6 @@
 import React from "react";
-
 import { buttonVariants } from "./buttonVariants";
+import { Slot } from "@radix-ui/react-slot";
 
 type ButtonVariant =
   | "primary"
@@ -20,6 +20,7 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
   icons?: React.ReactNode;
+  asChild?: boolean;
 };
 
 export const Button: React.FC<ButtonProps> = ({
@@ -30,11 +31,23 @@ export const Button: React.FC<ButtonProps> = ({
   leftIcon,
   rightIcon,
   icons,
+  asChild = false,
+  onClick,
   ...props
 }) => {
-  const { className, ...restProps } = props;
   const iconArray = icons ? React.Children.toArray(icons) : [];
   const computedClassName = buttonVariants({ variant });
+
+  const Comp = asChild ? Slot : href ? "a" : "button";
+
+  const handleClick = (e: React.MouseEvent<any>) => {
+    if (disabled) {
+      e.preventDefault();
+      return;
+    }
+    onClick?.(e);
+  };
+
   const content = (
     <>
       {icons ? (
@@ -57,22 +70,17 @@ export const Button: React.FC<ButtonProps> = ({
     </>
   );
 
-  if (href) {
-    return (
-      <a
-        className={computedClassName}
-        href={href}
-        aria-disabled={disabled || undefined}
-        tabIndex={disabled ? -1 : undefined}
-        onClick={(e) => disabled && e.preventDefault()}
-      >
-        {content}
-      </a>
-    );
-  }
   return (
-    <button className={computedClassName} disabled={disabled} {...restProps}>
+    <Comp
+      className={computedClassName}
+      href={href}
+      disabled={disabled}
+      aria-disabled={disabled || undefined}
+      tabIndex={disabled ? -1 : undefined}
+      onClick={handleClick}
+      {...props}
+    >
       {content}
-    </button>
+    </Comp>
   );
 };

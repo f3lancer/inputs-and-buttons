@@ -30,9 +30,3 @@ export const labelVariants = cva(
     },
   }
 );
-export const hintText = cva(
-  `font-display text-left ml-4 text-dark-grey text-[12px] leading-[133%]`
-);
-export const errorTextPrint = cva(
-  `font-display error-block text-left ml-4 text-red text-[12px] leading-[133%] hidden group-[.input-error]:block`
-);

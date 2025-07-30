@@ -31,10 +31,23 @@ export const selectOption = cva(
 export const helperTextHere = cva(
   "cursor-pointer h-controlsm flex items-center px-2 transition duration-300 rounded-xl"
 );
-export const iconStyle = cva("ml-2 w-6 h-6 text-gray-800");
+// export const iconStyle = cva("ml-2 w-6 h-6 text-gray-800");
+
 export const labelStyle = cva(
   "font-display font-normal text-[11px] leading-[150%] text-dark-grey"
 );
 export const selectedTextStyle = cva(
   "font-display font-normal text-base leading-[150%] text-black"
+);
+
+export const iconStyle = cva(
+  "ml-2 w-6 h-6 text-gray-800 transition-transform duration-300",
+  {
+    variants: {
+      open: {
+        true: "rotate-180",
+        false: "",
+      },
+    },
+  }
 );
