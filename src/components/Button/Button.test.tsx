@@ -7,6 +7,33 @@ import { Button } from "./Button";
 import "@testing-library/jest-dom";
 
 describe("Button", () => {
+  it("matches snapshot — primary", () => {
+    const { container } = render(<Button variant="primary">Primary</Button>);
+    expect(container).toMatchSnapshot();
+  });
+
+  it("matches snapshot — with icons", () => {
+    const { container } = render(
+      <Button
+        variant="primary"
+        leftIcon={<ChevronUpIcon />}
+        rightIcon={<ChevronUpIcon />}
+      >
+        With icons
+      </Button>
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it("matches snapshot — as link", () => {
+    const { container } = render(
+      <Button variant="primary" href="https://example.com">
+        Link
+      </Button>
+    );
+    expect(container).toMatchSnapshot();
+  });
+
   it("renders button text", () => {
     render(<Button variant="primary">Click me</Button>);
     expect(screen.getByText("Click me")).toBeInTheDocument();
