@@ -9,11 +9,11 @@ export const selectWrapper = cva(
         false: "border-grey",
       },
     },
-  }
+  },
 );
 
 export const selectOptionSkin = cva(
-  "py-1 px-2 border border-grey absolute z-[10] rounded-xl bg-white w-full"
+  "py-1 px-2 border border-grey absolute z-[10] rounded-xl bg-white w-full",
 );
 export const selectOption = cva(
   "cursor-pointer h-controlsm flex items-center px-2 transition duration-300 rounded-xl",
@@ -26,18 +26,17 @@ export const selectOption = cva(
     defaultVariants: {
       hoverable: true,
     },
-  }
+  },
 );
 export const helperTextHere = cva(
-  "cursor-pointer h-controlsm flex items-center px-2 transition duration-300 rounded-xl"
+  "cursor-pointer h-controlsm flex items-center px-2 transition duration-300 rounded-xl",
 );
-// export const iconStyle = cva("ml-2 w-6 h-6 text-gray-800");
 
 export const labelStyle = cva(
-  "font-display font-normal text-[11px] leading-[150%] text-dark-grey"
+  "font-display font-normal text-[11px] leading-[150%] text-dark-grey",
 );
 export const selectedTextStyle = cva(
-  "font-display font-normal text-base leading-[150%] text-black"
+  "font-display font-normal text-base leading-[150%] text-black",
 );
 
 export const iconStyle = cva(
@@ -49,5 +48,5 @@ export const iconStyle = cva(
         false: "",
       },
     },
-  }
+  },
 );

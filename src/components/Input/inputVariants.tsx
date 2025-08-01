@@ -12,7 +12,7 @@ export const inputVariants = cva(
           "group-[.input-error]:border-grey group-[.input-error]:bg-grey group-[.input-error]:[box-shadow:0_0_0_1px_#eb0014]",
       },
     },
-  }
+  },
 );
 
 export const labelVariants = cva(
@@ -28,5 +28,5 @@ export const labelVariants = cva(
           "group-[.input-error]:text-red group-[.input-error]:text-[11px] group-[.input-error]:leading-[150%] group-[.input-error]:top-[-16px] group-[.input-error]:left-[-2px]",
       },
     },
-  }
+  },
 );

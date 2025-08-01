@@ -1,6 +1,7 @@
-import React from "react";
-import { buttonVariants } from "./buttonVariants";
 import { Slot } from "@radix-ui/react-slot";
+import React from "react";
+
+import { buttonVariants, spElSt } from "./buttonVariants";
 
 type ButtonVariant =
   | "primary"
@@ -38,9 +39,9 @@ export const Button: React.FC<ButtonProps> = ({
   const iconArray = icons ? React.Children.toArray(icons) : [];
   const computedClassName = buttonVariants({ variant });
 
-  const Comp = asChild ? Slot : href ? "a" : "button";
+  const Comp: React.ElementType = asChild ? Slot : href ? "a" : "button"; // fix
 
-  const handleClick = (e: React.MouseEvent<any>) => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (disabled) {
       e.preventDefault();
       return;
@@ -52,19 +53,15 @@ export const Button: React.FC<ButtonProps> = ({
     <>
       {icons ? (
         <>
-          {iconArray[0] && (
-            <span className="inline-block w-[24px]">{iconArray[0]}</span>
-          )}
+          {iconArray[0] && <span className={spElSt()}>{iconArray[0]}</span>}
           {children}
-          {iconArray[1] && (
-            <span className="inline-block w-[24px]">{iconArray[1]}</span>
-          )}
+          {iconArray[1] && <span className={spElSt()}>{iconArray[1]}</span>}
         </>
       ) : (
         <>
-          <span className="inline-block w-[24px]">{leftIcon}</span>
+          <span className={spElSt()}>{leftIcon}</span>
           {children}
-          <span className="inline-block w-[24px]">{rightIcon}</span>
+          <span className={spElSt()}>{rightIcon}</span>
         </>
       )}
     </>

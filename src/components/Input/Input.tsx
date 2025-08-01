@@ -1,5 +1,7 @@
 import React, { useId, useState } from "react";
+
 import { FieldMessages } from "../FieldMessages";
+
 import { inputVariants, labelVariants } from "./inputVariants";
 
 export type InputProps = {
@@ -23,7 +25,10 @@ export const Input: React.FC<InputProps> = ({
   ...props
 }) => {
   const [touched, setTouched] = useState(false);
-  const internalId = id ?? useId();
+
+  const generatedId = useId();
+  const internalId = id ?? generatedId;
+
   const hasValue = (value ?? "").length > 0;
   const hasError =
     hasErrorProp ?? (touched && hasValue && (value?.length ?? 0) < 2);

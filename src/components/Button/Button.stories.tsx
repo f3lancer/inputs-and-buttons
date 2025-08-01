@@ -1,82 +1,77 @@
-import { ChevronUpIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
-import type { Meta, StoryObj } from '@storybook/react-vite';
+// src/components/Button/Button.stories.tsx
+import {
+  ArrowRightIcon,
+  ArrowLeftIcon,
+  // MusicalNoteIcon,
+  // ChevronRightIcon,
+} from "@heroicons/react/24/outline";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { Button } from './Button';
+import { Button } from "./Button";
 
 const meta: Meta<typeof Button> = {
-  title: 'Components/Button',
+  title: "Components/Button",
   component: Button,
-  tags: ['autodocs'],
-  argTypes: {
-    variant: {
-      control: { type: 'select' },
-      options: [
-        'primary',
-        'secondary',
-        'outline',
-        'destructive',
-        'ghost',
-        'disabled',
-        'linck',
-        'doubleIcon',
-        'leftIcon',
-        'rightIcon',
-      ],
-      defaultValue: 'primary',
-    },
+  args: {
+    children: "Click me",
   },
 };
 
 export default meta;
-
 type Story = StoryObj<typeof Button>;
 
 export const Primary: Story = {
   args: {
-    children: 'Primary',
+    variant: "primary",
   },
 };
 
 export const Secondary: Story = {
   args: {
-    children: 'Secondary',
+    variant: "secondary",
   },
 };
 
-export const WithHref: Story = {
+export const Outline: Story = {
   args: {
-    children: 'As Link',
-    href: 'https://google.com',
+    variant: "outline",
+  },
+};
+
+export const WithLeftIcon: Story = {
+  args: {
+    variant: "leftIcon",
+    leftIcon: <ArrowLeftIcon className="w-5 h-5" />,
+  },
+};
+
+export const WithRightIcon: Story = {
+  args: {
+    variant: "rightIcon",
+    rightIcon: <ArrowRightIcon className="w-5 h-5" />,
+  },
+};
+
+export const WithDoubleIcons: Story = {
+  args: {
+    variant: "doubleIcon",
+    icons: [
+      <ArrowLeftIcon key="left" className="w-5 h-5" />,
+      <ArrowRightIcon key="right" className="w-5 h-5" />,
+    ],
+  },
+};
+
+export const AsLink: Story = {
+  args: {
+    variant: "linck",
+    href: "#",
   },
 };
 
 export const Disabled: Story = {
   args: {
-    children: 'Disabled',
+    variant: "disabled",
     disabled: true,
-  },
-};
-
-export const LeftIcon: Story = {
-  args: {
-    children: 'Left icon',
-    leftIcon: <ChevronUpIcon className="w-6 h-6" />,
-  },
-};
-
-export const RightIcon: Story = {
-  args: {
-    children: 'Right icon',
-    rightIcon: <ChevronDownIcon className="w-6 h-6" />,
-  },
-};
-
-export const DoubleIcons: Story = {
-  args: {
-    children: 'Double icons',
-    icons: [
-      <ChevronUpIcon className="w-6 h-6" key="left" />,
-      <ChevronDownIcon className="w-6 h-6" key="right" />,
-    ],
   },
 };

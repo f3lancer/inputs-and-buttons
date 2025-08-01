@@ -1,0 +1,82 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Button > matches snapshot — as link 1`] = `
+<div>
+  <a
+    class="font-display font-semibold text-base w-full rounded-xl h-controllg transition duration-400 primary cursor-pointer text-white bg-blue"
+    href="https://example.com"
+  >
+    <span
+      class="inline-block w-[24px]"
+    />
+    Link
+    <span
+      class="inline-block w-[24px]"
+    />
+  </a>
+</div>
+`;
+
+exports[`Button > matches snapshot — primary 1`] = `
+<div>
+  <button
+    class="font-display font-semibold text-base w-full rounded-xl h-controllg transition duration-400 primary cursor-pointer text-white bg-blue"
+  >
+    <span
+      class="inline-block w-[24px]"
+    />
+    Primary
+    <span
+      class="inline-block w-[24px]"
+    />
+  </button>
+</div>
+`;
+
+exports[`Button > matches snapshot — with icons 1`] = `
+<div>
+  <button
+    class="font-display font-semibold text-base w-full rounded-xl h-controllg transition duration-400 primary cursor-pointer text-white bg-blue"
+  >
+    <span
+      class="inline-block w-[24px]"
+    >
+      <svg
+        aria-hidden="true"
+        data-slot="icon"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="m4.5 15.75 7.5-7.5 7.5 7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </span>
+    With icons
+    <span
+      class="inline-block w-[24px]"
+    >
+      <svg
+        aria-hidden="true"
+        data-slot="icon"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="m4.5 15.75 7.5-7.5 7.5 7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </span>
+  </button>
+</div>
+`;

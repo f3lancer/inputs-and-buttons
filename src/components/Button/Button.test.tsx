@@ -20,7 +20,7 @@ describe("Button", () => {
         rightIcon={<ChevronUpIcon />}
       >
         With icons
-      </Button>
+      </Button>,
     );
     expect(container).toMatchSnapshot();
   });
@@ -29,7 +29,7 @@ describe("Button", () => {
     const { container } = render(
       <Button variant="primary" href="https://example.com">
         Link
-      </Button>
+      </Button>,
     );
     expect(container).toMatchSnapshot();
   });
@@ -43,7 +43,7 @@ describe("Button", () => {
     render(
       <Button variant="primary" href="https://google.com">
         Go
-      </Button>
+      </Button>,
     );
     const link = screen.getByText("Go");
     expect(link.tagName).toBe("A");
@@ -54,7 +54,7 @@ describe("Button", () => {
     render(
       <Button variant="primary" disabled>
         Disabled
-      </Button>
+      </Button>,
     );
     expect(screen.getByRole("button")).toBeDisabled();
   });
@@ -64,7 +64,7 @@ describe("Button", () => {
     render(
       <Button variant="primary">
         <span onClick={handleClick}>Clickable</span>
-      </Button>
+      </Button>,
     );
     fireEvent.click(screen.getByText("Clickable"));
     expect(handleClick).toHaveBeenCalled();
@@ -78,7 +78,7 @@ describe("Button", () => {
         rightIcon={<ChevronUpIcon data-testid="right" />}
       >
         Icon button
-      </Button>
+      </Button>,
     );
     expect(screen.getByTestId("left")).toBeInTheDocument();
     expect(screen.getByTestId("right")).toBeInTheDocument();
@@ -94,7 +94,7 @@ describe("Button", () => {
         ]}
       >
         Icon array
-      </Button>
+      </Button>,
     );
     expect(screen.getByTestId("icon-left")).toBeInTheDocument();
     expect(screen.getByTestId("icon-right")).toBeInTheDocument();

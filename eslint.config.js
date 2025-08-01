@@ -30,10 +30,9 @@ plugins: {
 },
 rules: {
   '@stylistic/indent': ['error', 2],
-  '@stylistic/semi': ['error', 'always'],
-  '@stylistic/quotes': ['error', 'single'],
+  '@stylistic/semi': ['error', 'always'], 
   '@stylistic/comma-dangle': ['error', 'always-multiline'],
-  '@stylistic/space-before-function-paren': ['error', 'never'],
+  '@stylistic/space-before-function-paren': ['error', 'always'],
   'import/order': [
     'error',
     {

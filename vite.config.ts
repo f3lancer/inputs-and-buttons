@@ -9,6 +9,8 @@ import { defineConfig } from "vite";
 export default defineConfig({
   plugins: [react(), tailwindcssVite()],
   test: {
+    globals: true,
+    environment: "jsdom",
     projects: [
       {
         extends: true,

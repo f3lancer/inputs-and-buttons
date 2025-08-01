@@ -1,28 +1,45 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
+// src/components/Input/Input.stories.tsx
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { useState } from "react";
 
-import { Input } from './Input';
+import { Input } from "./Input";
 
-// Обов'язково цей default export!
 const meta: Meta<typeof Input> = {
-  title: 'UI/Input',
+  title: "Components/Input",
   component: Input,
-  tags: ['autodocs'],
-};
-export default meta;
-
-type Story = StoryObj<typeof Input>;
-
-export const Basic: Story = {
   args: {
-    label: 'Name',
-    helperText: 'Enter Name',
+    label: "Your name",
+    helperText: "Please enter your full name.",
   },
 };
 
-export const Error: Story = {
-  args: {
-    label: 'Name',
-    errorText: 'Min 2 values',
-    helperText: 'Enter Name',
+export default meta;
+type Story = StoryObj<typeof Input>;
+
+export const Default: Story = {
+  render: (args) => {
+    const [value, setValue] = useState("");
+
+    return (
+      <Input
+        {...args}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+    );
+  },
+};
+
+export const Prefilled: Story = {
+  render: (args) => {
+    const [value, setValue] = useState("John Doe");
+
+    return (
+      <Input
+        {...args}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+    );
   },
 };
