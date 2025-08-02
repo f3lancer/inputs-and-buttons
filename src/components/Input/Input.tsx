@@ -1,66 +1,54 @@
-import React, { useId, useState } from "react";
+import { useId } from "react";
 
-import { FieldMessages } from "../FieldMessages";
-
-import { inputVariants, labelVariants } from "./inputVariants";
+import { inputVariants, SpanVariants } from "./inputVariants";
 
 export type InputProps = {
   label: string;
-  helperText?: string;
-  errorText?: string;
+  hasError?: boolean;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   id?: string;
-  hasError?: boolean;
+  type?: string;
+  name?: string;
 };
 
 export const Input: React.FC<InputProps> = ({
   label,
-  helperText,
-  errorText,
+  hasError,
   value,
-  id,
   onChange,
-  hasError: hasErrorProp,
+  id,
+  type = "text",
   ...props
 }) => {
-  const [touched, setTouched] = useState(false);
-
   const generatedId = useId();
+
   const internalId = id ?? generatedId;
 
   const hasValue = (value ?? "").length > 0;
-  const hasError =
-    hasErrorProp ?? (touched && hasValue && (value?.length ?? 0) < 2);
-
-  let inputClass = hasValue ? " has-value" : "";
-  if (hasError) inputClass += " input-error";
-  else if (touched && hasValue) inputClass += " input-true";
 
   return (
-    <div className={`group relative flex flex-col gap-2 ${inputClass}`}>
+    <label className="group relative flex">
       <input
         id={internalId}
-        className={inputVariants({ state: hasError ? "error" : "default" })}
+        placeholder=" "
+        className={
+          "peer " + inputVariants({ state: hasError ? "error" : "default" })
+        }
+        type={type}
         value={value}
-        onChange={(e) => {
-          setTouched(false);
-          onChange?.(e);
-        }}
-        onBlur={() => setTouched(true)}
+        onChange={onChange}
         {...props}
       />
-
-      <label
-        htmlFor={internalId}
-        className={labelVariants({
+      <span
+        className={SpanVariants({
           state: hasError ? "error" : "default",
+          hasValue,
         })}
       >
         {label}
-      </label>
-
-      <FieldMessages errorText={errorText} helperText={helperText} />
-    </div>
+      </span>
+      {/* <FieldMessages errorText={errorText} helperText={helperText} /> */}
+    </label>
   );
 };

@@ -21,7 +21,7 @@ export const Default: Story = {
   render: (args) => {
     const [value, setValue] = useState("Option 1");
 
-    return <Select {...args} value={value} onChange={(val) => setValue(val)} />;
+    return <Select {...args} value={value} onChange={val => setValue(val)} />;
   },
 };
 
@@ -29,6 +29,6 @@ export const Empty: Story = {
   render: (args) => {
     const [value, setValue] = useState("");
 
-    return <Select {...args} value={value} onChange={(val) => setValue(val)} />;
+    return <Select {...args} value={value} onChange={val => setValue(val)} />;
   },
 };

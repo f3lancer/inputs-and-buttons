@@ -45,8 +45,7 @@ describe("Button", () => {
         Go
       </Button>,
     );
-    const link = screen.getByText("Go");
-    expect(link.tagName).toBe("A");
+    const link = screen.getByRole("link", { name: "Go" });
     expect(link).toHaveAttribute("href", "https://google.com");
   });
 
@@ -82,21 +81,5 @@ describe("Button", () => {
     );
     expect(screen.getByTestId("left")).toBeInTheDocument();
     expect(screen.getByTestId("right")).toBeInTheDocument();
-  });
-
-  it("renders icons array as left and right absolute icons", () => {
-    render(
-      <Button
-        variant="primary"
-        icons={[
-          <ChevronUpIcon data-testid="icon-left" key="l" />,
-          <ChevronUpIcon data-testid="icon-right" key="r" />,
-        ]}
-      >
-        Icon array
-      </Button>,
-    );
-    expect(screen.getByTestId("icon-left")).toBeInTheDocument();
-    expect(screen.getByTestId("icon-right")).toBeInTheDocument();
   });
 });

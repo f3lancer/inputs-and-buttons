@@ -5,28 +5,29 @@ export const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: "primary cursor-pointer text-white bg-blue",
-        secondary: "secondary cursor-pointer text-black bg-grey",
-        outline:
-          "outline cursor-pointer text-black  border-2 border-black outline",
+        primary:
+          "primary cursor-pointer text-white bg-blue border border-blue hover:bg-white hover:border-black  hover:text-black",
+        secondary:
+          "secondary cursor-pointer text-black bg-grey border border-grey hover:bg-white hover:border-black",
+        outline: "outline cursor-pointer text-black  border-2 border-black",
         destructive: "destructive cursor-pointer text-white bg-red",
-        ghost: "ghost cursor-pointer text-black",
-        disabled: "disabled text-black/50 bg-grey",
-        linck: "linck cursor-pointer text-black",
         doubleIcon:
-          "doubleIcon bg-grey text-black justify-between flex justify-between px-4 items-center",
+          "doubleIcon bg-grey text-black flex justify-between px-4 items-center",
         leftIcon:
-          "leftIcon bg-grey text-black justify-between flex justify-between px-4 items-center",
+          "leftIcon bg-grey text-black flex justify-between px-4 items-center",
         rightIcon:
-          "rightIcon bg-grey text-black justify-between flex justify-between px-4 items-center",
+          "rightIcon bg-grey text-black flex justify-between px-4 items-center",
       },
-    },
-    defaultVariants: {
-      variant: "primary",
+      disabled: {
+        true: " text-black/50 bg-grey ",
+        false: null,
+      },
+      a: {
+        true: "link-test cursor-pointer text-black flex text-center",
+        false: null,
+      },
     },
   },
 );
 
 export type ButtonVariant = VariantProps<typeof buttonVariants>["variant"];
-
-export const spElSt = cva("inline-block w-[24px]");

@@ -3,16 +3,18 @@
 exports[`Button > matches snapshot — as link 1`] = `
 <div>
   <a
-    class="font-display font-semibold text-base w-full rounded-xl h-controllg transition duration-400 primary cursor-pointer text-white bg-blue"
+    class="font-display font-semibold text-base w-full rounded-xl h-controllg transition duration-400 primary cursor-pointer text-white bg-blue border border-blue hover:bg-white hover:border-black  hover:text-black link-test cursor-pointer text-black flex text-center"
     href="https://example.com"
   >
-    <span
-      class="inline-block w-[24px]"
-    />
-    Link
-    <span
-      class="inline-block w-[24px]"
-    />
+    <div
+      class="flex items-center justify-between w-full"
+    >
+      <div
+        class="flex-1"
+      >
+        Link
+      </div>
+    </div>
   </a>
 </div>
 `;
@@ -20,15 +22,17 @@ exports[`Button > matches snapshot — as link 1`] = `
 exports[`Button > matches snapshot — primary 1`] = `
 <div>
   <button
-    class="font-display font-semibold text-base w-full rounded-xl h-controllg transition duration-400 primary cursor-pointer text-white bg-blue"
+    class="font-display font-semibold text-base w-full rounded-xl h-controllg transition duration-400 primary cursor-pointer text-white bg-blue border border-blue hover:bg-white hover:border-black  hover:text-black"
   >
-    <span
-      class="inline-block w-[24px]"
-    />
-    Primary
-    <span
-      class="inline-block w-[24px]"
-    />
+    <div
+      class="flex items-center justify-between w-full"
+    >
+      <div
+        class="flex-1"
+      >
+        Primary
+      </div>
+    </div>
   </button>
 </div>
 `;
@@ -36,10 +40,10 @@ exports[`Button > matches snapshot — primary 1`] = `
 exports[`Button > matches snapshot — with icons 1`] = `
 <div>
   <button
-    class="font-display font-semibold text-base w-full rounded-xl h-controllg transition duration-400 primary cursor-pointer text-white bg-blue"
+    class="font-display font-semibold text-base w-full rounded-xl h-controllg transition duration-400 primary cursor-pointer text-white bg-blue border border-blue hover:bg-white hover:border-black  hover:text-black"
   >
-    <span
-      class="inline-block w-[24px]"
+    <div
+      class="flex items-center justify-between w-full"
     >
       <svg
         aria-hidden="true"
@@ -56,11 +60,11 @@ exports[`Button > matches snapshot — with icons 1`] = `
           stroke-linejoin="round"
         />
       </svg>
-    </span>
-    With icons
-    <span
-      class="inline-block w-[24px]"
-    >
+      <div
+        class="flex-1"
+      >
+        With icons
+      </div>
       <svg
         aria-hidden="true"
         data-slot="icon"
@@ -76,7 +80,7 @@ exports[`Button > matches snapshot — with icons 1`] = `
           stroke-linejoin="round"
         />
       </svg>
-    </span>
+    </div>
   </button>
 </div>
 `;

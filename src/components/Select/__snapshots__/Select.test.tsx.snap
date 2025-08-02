@@ -41,11 +41,6 @@ exports[`Select > matches snapshot — default state 1`] = `
     <div
       class="relative"
     />
-    <div
-      class="font-display text-left ml-4 text-dark-grey text-[12px] leading-[133%]"
-    >
-      Some helper text
-    </div>
   </div>
 </div>
 `;
@@ -111,11 +106,6 @@ exports[`Select > matches snapshot — open dropdown 1`] = `
         </div>
       </div>
     </div>
-    <div
-      class="font-display text-left ml-4 text-dark-grey text-[12px] leading-[133%]"
-    >
-      Some helper text
-    </div>
   </div>
 </div>
 `;
@@ -163,11 +153,6 @@ exports[`Select > matches snapshot — selected option 1`] = `
     <div
       class="relative"
     />
-    <div
-      class="font-display text-left ml-4 text-dark-grey text-[12px] leading-[133%]"
-    >
-      Some helper text
-    </div>
   </div>
 </div>
 `;

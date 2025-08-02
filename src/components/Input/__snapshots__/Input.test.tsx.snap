@@ -2,63 +2,50 @@
 
 exports[`Input > matches snapshot — default 1`] = `
 <div>
-  <div
-    class="group relative flex flex-col gap-2 "
+  <label
+    class="group relative flex"
   >
     <input
-      class="class-input peer font-display h-controllg bg-grey border border-grey font-sans
+      class="peer class-input peer font-display h-controllg   
    font-normal text-base leading-[150%] text-black px-4 relative rounded-xl transition-all duration-300
-   focus:outline-none focus:[box-shadow:0_0_0_1px__var(--color-blue)] focus:bg-grey focus:border-grey"
+   focus:outline-none focus:border-blue focus:shadow-[0_0_0_1px_var(--color-blue)] w-full default bg-grey border border-grey"
       id="«r2»"
+      placeholder=" "
+      type="text"
     />
-    <label
-      class="class-label font-display absolute top-[0] z-[1] h-controllg flex items-center px-4 pointer-events-none text-dark-grey transition-all duration-300
-  peer-focus:text-blue peer-focus:text-[11px] peer-focus:leading-[150%] peer-focus:top-[-16px] peer-focus:left-[-2px]
- group-[.has-value]:text-[11px] group-[.has-value]:leading-[150%] group-[.has-value]:top-[-16px] group-[.has-value]:left-[-2px]
-  "
-      for="«r2»"
+    <span
+      class="
+  class-span font-normal font-display leading-[150%] absolute z-[1] transition-all duration-300 px-4 peer-focus:text-blue
+  peer-focus:text-[11px] peer-focus:top-0  peer-focus:-translate-y-0 left-0 text-xs11
+   text-dark-grey top-1/2 -translate-y-1/2 "
     >
       Email
-    </label>
-    <div
-      class="font-display text-left ml-4 text-dark-grey text-[12px] leading-[133%]"
-    >
-      Enter your email
-    </div>
-  </div>
+    </span>
+  </label>
 </div>
 `;
 
 exports[`Input > matches snapshot — with error 1`] = `
 <div>
-  <div
-    class="group relative flex flex-col gap-2  input-error"
+  <label
+    class="group relative flex"
   >
     <input
-      class="class-input peer font-display h-controllg bg-grey border border-grey font-sans
+      class="peer class-input peer font-display h-controllg   
    font-normal text-base leading-[150%] text-black px-4 relative rounded-xl transition-all duration-300
-   focus:outline-none focus:[box-shadow:0_0_0_1px__var(--color-blue)] focus:bg-grey focus:border-grey group-[.input-error]:border-grey group-[.input-error]:bg-grey group-[.input-error]:[box-shadow:0_0_0_1px_#eb0014]"
+   focus:outline-none focus:border-blue focus:shadow-[0_0_0_1px_var(--color-blue)] w-full error border border-red bg-grey shadow-[0_0_0_1px_var(--color-red)]"
       id="«r3»"
+      placeholder=" "
+      type="text"
     />
-    <label
-      class="class-label font-display absolute top-[0] z-[1] h-controllg flex items-center px-4 pointer-events-none text-dark-grey transition-all duration-300
-  peer-focus:text-blue peer-focus:text-[11px] peer-focus:leading-[150%] peer-focus:top-[-16px] peer-focus:left-[-2px]
- group-[.has-value]:text-[11px] group-[.has-value]:leading-[150%] group-[.has-value]:top-[-16px] group-[.has-value]:left-[-2px]
-   group-[.input-error]:text-red group-[.input-error]:text-[11px] group-[.input-error]:leading-[150%] group-[.input-error]:top-[-16px] group-[.input-error]:left-[-2px]"
-      for="«r3»"
+    <span
+      class="
+  class-span font-normal font-display leading-[150%] absolute z-[1] transition-all duration-300 px-4 peer-focus:text-blue
+  peer-focus:text-[11px] peer-focus:top-0  peer-focus:-translate-y-0 left-0 text-xs11
+   text-dark-grey top-1/2 -translate-y-1/2 "
     >
       Username
-    </label>
-    <div
-      class="font-display error-block text-left ml-4 text-red text-[12px] leading-[133%] hidden group-[.input-error]:block"
-    >
-      This field is required
-    </div>
-    <div
-      class="font-display text-left ml-4 text-dark-grey text-[12px] leading-[133%]"
-    >
-      Enter username
-    </div>
-  </div>
+    </span>
+  </label>
 </div>
 `;

@@ -1,8 +1,6 @@
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import React, { useState } from "react";
 
-import { FieldMessages } from "../FieldMessages";
-
 import {
   selectWrapper,
   selectOption,
@@ -15,14 +13,12 @@ import {
 type SelectProps = {
   options: string[];
   label: string;
-  helperText: string;
   value: string;
   onChange?: (value: string) => void;
 };
 
 export const Select: React.FC<SelectProps> = ({
   options,
-  helperText,
   label,
   value,
   onChange,
@@ -46,7 +42,7 @@ export const Select: React.FC<SelectProps> = ({
       <div className="relative">
         {isOpen && (
           <div className={selectOptionSkin()}>
-            {options.map((opt) => (
+            {options.map(opt => (
               <div
                 key={opt}
                 className={selectOption()}
@@ -61,7 +57,6 @@ export const Select: React.FC<SelectProps> = ({
           </div>
         )}
       </div>
-      <FieldMessages helperText={helperText} />
     </div>
   );
 };

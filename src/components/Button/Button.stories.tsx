@@ -1,10 +1,5 @@
 // src/components/Button/Button.stories.tsx
-import {
-  ArrowRightIcon,
-  ArrowLeftIcon,
-  // MusicalNoteIcon,
-  // ChevronRightIcon,
-} from "@heroicons/react/24/outline";
+import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { Button } from "./Button";
@@ -55,17 +50,14 @@ export const WithRightIcon: Story = {
 export const WithDoubleIcons: Story = {
   args: {
     variant: "doubleIcon",
-    icons: [
-      <ArrowLeftIcon key="left" className="w-5 h-5" />,
-      <ArrowRightIcon key="right" className="w-5 h-5" />,
-    ],
+    leftIcon: <ArrowLeftIcon className="w-5 h-5" />,
+    rightIcon: <ArrowRightIcon className="w-5 h-5" />,
   },
 };
 
 export const AsLink: Story = {
   args: {
-    variant: "linck",
-    href: "#",
+    href: "www.google.com",
   },
 };
 
