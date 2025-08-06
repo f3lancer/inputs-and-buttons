@@ -5,7 +5,12 @@ import { describe, it, expect } from "vitest";
 import { Select } from "./Select";
 
 describe("Select", () => {
-  const options = ["Option 1", "Option 2", "Option 3"];
+  const options = [
+    { value: "1", label: "Option 1" },
+    { value: "2", label: "Option 2" },
+    { value: "3", label: "Option 3" },
+  ];
+
   const label = "Choose option";
   const placeholder = "Select something";
 
@@ -97,4 +102,26 @@ describe("Select", () => {
 
     expect(container).toMatchSnapshot();
   });
+});
+
+it("renders default value and updates on user selection (uncontrolled)", async () => {
+  render(
+    <Select
+      label="Choose option"
+      defaultValue="2"
+      options={[
+        { value: "1", label: "Option 1" },
+        { value: "2", label: "Option 2" },
+        { value: "3", label: "Option 3" },
+      ]}
+    />,
+  );
+
+  expect(screen.getByText("Option 2")).not.toBeNull();
+
+  await userEvent.click(screen.getByText("Option 2"));
+
+  await userEvent.click(screen.getByText("Option 3"));
+
+  expect(screen.getByText("Option 3")).not.toBeNull();
 });

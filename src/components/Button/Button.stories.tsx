@@ -1,3 +1,5 @@
+// // src/components/Button/Button.stories.tsx
+
 // src/components/Button/Button.stories.tsx
 import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
 import type { Meta, StoryObj } from "@storybook/react-vite";
@@ -7,63 +9,98 @@ import { Button } from "./Button";
 const meta: Meta<typeof Button> = {
   title: "Components/Button",
   component: Button,
-  args: {
-    children: "Click me",
-  },
 };
 
 export default meta;
 type Story = StoryObj<typeof Button>;
 
-export const Primary: Story = {
-  args: {
-    variant: "primary",
-  },
+export const Default: Story = {
+  args: {},
+  render: args => (
+    <div className="flex flex-col gap-4">
+      <Button {...args} variant="primary">
+        Primary
+      </Button>
+      <Button {...args} variant="secondary">
+        Secondary
+      </Button>
+      <Button {...args} variant="outline">
+        Outline
+      </Button>
+      <Button {...args} variant="destructive">
+        Destructive
+      </Button>
+      <Button {...args} variant="ghost">
+        Ghost
+      </Button>
+      <Button {...args} variant="link">
+        Link
+      </Button>
+    </div>
+  ),
 };
 
-export const Secondary: Story = {
+export const WithIcons: Story = {
   args: {
-    variant: "secondary",
-  },
-};
-
-export const Outline: Story = {
-  args: {
-    variant: "outline",
-  },
-};
-
-export const WithLeftIcon: Story = {
-  args: {
-    variant: "leftIcon",
-    leftIcon: <ArrowLeftIcon className="w-5 h-5" />,
-  },
-};
-
-export const WithRightIcon: Story = {
-  args: {
-    variant: "rightIcon",
-    rightIcon: <ArrowRightIcon className="w-5 h-5" />,
-  },
-};
-
-export const WithDoubleIcons: Story = {
-  args: {
-    variant: "doubleIcon",
     leftIcon: <ArrowLeftIcon className="w-5 h-5" />,
     rightIcon: <ArrowRightIcon className="w-5 h-5" />,
   },
+  render: args => (
+    <div className="flex flex-col gap-4">
+      <Button {...args} variant="primary">
+        Primary
+      </Button>
+      <Button {...args} variant="secondary">
+        Secondary
+      </Button>
+      <Button {...args} variant="outline">
+        Outline
+      </Button>
+      <Button {...args} variant="destructive">
+        Destructive
+      </Button>
+      <Button {...args} variant="ghost">
+        Ghost
+      </Button>
+      <Button {...args} variant="link">
+        Link
+      </Button>
+    </div>
+  ),
+};
+
+export const DisabledButtons: Story = {
+  args: {
+    disabled: true,
+  },
+  render: args => (
+    <div className="flex flex-col gap-4">
+      <Button {...args} variant="primary">
+        Primary
+      </Button>
+      <Button {...args} variant="secondary">
+        Secondary
+      </Button>
+      <Button {...args} variant="outline">
+        Outline
+      </Button>
+      <Button {...args} variant="destructive">
+        Destructive
+      </Button>
+      <Button {...args} variant="ghost">
+        Ghost
+      </Button>
+      <Button {...args} variant="link">
+        Link
+      </Button>
+    </div>
+  ),
 };
 
 export const AsLink: Story = {
-  args: {
-    href: "www.google.com",
-  },
-};
-
-export const Disabled: Story = {
-  args: {
-    variant: "disabled",
-    disabled: true,
-  },
+  render: () => (
+    <Button asChild>
+      <a href="www.google.com">Click me</a>
+    </Button>
+  ),
 };

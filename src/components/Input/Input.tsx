@@ -1,54 +1,71 @@
-import { useId } from "react";
+import { cva } from "class-variance-authority";
+import { useState } from "react";
 
-import { inputVariants, SpanVariants } from "./inputVariants";
+const inputVariants = cva(
+  `class-input peer font-display h-controllg   
+   font-normal text-base bg-grey leading-[150%] text-black px-4 relative rounded-xl transition-all 
+   duration-300 focus:outline-none focus:border-blue focus:shadow-[0_0_0_1px_var(--color-blue)] w-full`,
+  {
+    variants: {
+      invalid: {
+        false: "border border-grey",
+        true: "border border-red shadow-[0_0_0_1px_var(--color-red)]",
+      },
+    },
+  },
+);
+const labelVariants = cva(
+  `class-label font-normal font-display leading-[150%] absolute z-[1] transition-all duration-300 px-4
+peer-focus:text-blue peer-focus:text-[11px] peer-focus:top-1  peer-focus:-translate-y-0 left-0 text-xs11`,
+  {
+    variants: {
+      invalid: {
+        false: "invalid-false text-dark-grey",
+        true: "invalid text-dark-grey",
+      },
+      hasValue: {
+        false: "hasValue-false top-1/2 -translate-y-1/2 ",
+        true: "hasValue text-[11px] top-1",
+      },
+    },
+  },
+);
 
-export type InputProps = {
-  label: string;
-  hasError?: boolean;
-  value?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  id?: string;
-  type?: string;
-  name?: string;
-};
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  label?: string;
+  invalid?: boolean;
+}
 
 export const Input: React.FC<InputProps> = ({
   label,
-  hasError,
+  invalid = false,
   value,
+  defaultValue,
   onChange,
-  id,
-  type = "text",
   ...props
 }) => {
-  const generatedId = useId();
+  const [hasValue, setHasValue] = useState(
+    (value ?? defaultValue ?? "").toString().length > 0,
+  );
 
-  const internalId = id ?? generatedId;
-
-  const hasValue = (value ?? "").length > 0;
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setHasValue(e.target.value.length > 0);
+    onChange?.(e);
+  };
 
   return (
     <label className="group relative flex">
       <input
-        id={internalId}
-        placeholder=" "
-        className={
-          "peer " + inputVariants({ state: hasError ? "error" : "default" })
-        }
-        type={type}
+        className={inputVariants({ invalid })}
+        // {...(value !== undefined ? { value } : { defaultValue })}
         value={value}
-        onChange={onChange}
+        defaultValue={defaultValue}
+        onChange={handleChange}
         {...props}
       />
-      <span
-        className={SpanVariants({
-          state: hasError ? "error" : "default",
-          hasValue,
-        })}
-      >
+      <div className={labelVariants({ invalid, hasValue })}>
         {label}
-      </span>
-      {/* <FieldMessages errorText={errorText} helperText={helperText} /> */}
+      </div>
     </label>
   );
 };

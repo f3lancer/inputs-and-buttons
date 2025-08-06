@@ -27,8 +27,8 @@ describe("Button", () => {
 
   it("matches snapshot — as link", () => {
     const { container } = render(
-      <Button variant="primary" href="https://example.com">
-        Link
+      <Button asChild>
+        <a href="https://google.com">Link</a>
       </Button>,
     );
     expect(container).toMatchSnapshot();
@@ -41,11 +41,11 @@ describe("Button", () => {
 
   it("renders as <a> if href provided", () => {
     render(
-      <Button variant="primary" href="https://google.com">
-        Go
+      <Button asChild>
+        <a href="https://google.com">Link</a>
       </Button>,
     );
-    const link = screen.getByRole("link", { name: "Go" });
+    const link = screen.getByRole("link", { name: "Link" });
     expect(link).toHaveAttribute("href", "https://google.com");
   });
 

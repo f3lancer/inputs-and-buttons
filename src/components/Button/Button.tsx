@@ -1,19 +1,65 @@
 import { Slot } from "@radix-ui/react-slot";
+import { cva } from "class-variance-authority";
 import React from "react";
 
-import { buttonVariants } from "./buttonVariants";
+const buttonVariants = cva(
+  "font-display font-semibold text-base w-full rounded-xl h-controllg transition-all duration-400 px-4",
+  {
+    variants: {
+      variant: {
+        primary:
+          "primary text-white bg-blue  border-blue",
+        secondary:
+          "secondary text-black bg-grey border-grey",
+        outline: "outline  text-black  border-2 border-black",
+        destructive: "destructive text-white bg-red",
+        ghost: "",
+        link: "",
+      },
+      disabled: {
+        true: "opacity-50 cursor-auto",
+        false: null,
+      },
+    },
+    compoundVariants: [
+      {
+        disabled: false,
+        variant: "primary",
+        class: "border hover:bg-white hover:border-black  hover:text-black cursor-pointer hover:px-3",
+      },
+      {
+        disabled: false,
+        variant: "secondary",
+        class: "border hover:bg-white hover:border-black  hover:text-black cursor-pointer hover:px-3",
+      },
+      {
+        disabled: false,
+        variant: "outline",
+        class: "cursor-pointer hover:border hover:px-3",
+      },
+      {
+        disabled: false,
+        variant: "destructive",
+        class: "cursor-pointer hover:px-3",
+      },
+      {
+        disabled: false,
+        variant: "ghost",
+        class: "cursor-pointer hover:px-3",
+      },
+      {
+        disabled: false,
+        variant: "link",
+        class: "cursor-pointer hover:px-3",
+      },
+    ],
+  },
+);
 
-type ButtonVariant = | "primary"
-  | "secondary"
-  | "outline"
-  | "destructive"
-  | "leftIcon"
-  | "rightIcon"
-  | "doubleIcon";
+type ButtonVariant = | "primary" | "secondary" | "outline" | "destructive" | "link" | "ghost";
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   variant: ButtonVariant;
-  href?: string;
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
   asChild?: boolean;
@@ -21,21 +67,18 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 
 export const Button: React.FC<ButtonProps> = ({
   disabled = false,
-  variant,
+  variant = "primary",
   children,
   leftIcon,
   rightIcon,
   asChild = false,
   ...props
 }) => {
-  const Comp: React.ElementType = asChild ? Slot : props.href ? "a" : "button";
-
-  const resolvedVariant = variant ?? (Comp !== "a" ? "primary" : undefined);
+  const Comp: React.ElementType = asChild ? Slot : "button";
 
   const computedClassName = buttonVariants({
-    variant: resolvedVariant,
+    variant: variant,
     disabled,
-    a: Comp === "a",
   });
 
   return (
@@ -48,7 +91,7 @@ export const Button: React.FC<ButtonProps> = ({
     >
       <div className="flex items-center justify-between w-full">
         {leftIcon}
-        <div className="flex-1">{children}</div>
+        <div className="flex-1 text-center">{children}</div>
         {rightIcon}
       </div>
     </Comp>

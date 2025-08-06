@@ -2,33 +2,32 @@
 
 exports[`Button > matches snapshot — as link 1`] = `
 <div>
-  <a
-    class="font-display font-semibold text-base w-full rounded-xl h-controllg transition duration-400 primary cursor-pointer text-white bg-blue border border-blue hover:bg-white hover:border-black  hover:text-black link-test cursor-pointer text-black flex text-center"
-    href="https://example.com"
+  <div
+    class="font-display font-semibold text-base w-full rounded-xl h-controllg transition-all duration-400 px-4 primary text-white bg-blue  border-blue border hover:bg-white hover:border-black  hover:text-black cursor-pointer hover:px-3 flex items-center justify-between w-full"
   >
     <div
-      class="flex items-center justify-between w-full"
+      class="flex-1 text-center"
     >
-      <div
-        class="flex-1"
+      <a
+        href="https://google.com"
       >
         Link
-      </div>
+      </a>
     </div>
-  </a>
+  </div>
 </div>
 `;
 
 exports[`Button > matches snapshot — primary 1`] = `
 <div>
   <button
-    class="font-display font-semibold text-base w-full rounded-xl h-controllg transition duration-400 primary cursor-pointer text-white bg-blue border border-blue hover:bg-white hover:border-black  hover:text-black"
+    class="font-display font-semibold text-base w-full rounded-xl h-controllg transition-all duration-400 px-4 primary text-white bg-blue  border-blue border hover:bg-white hover:border-black  hover:text-black cursor-pointer hover:px-3"
   >
     <div
       class="flex items-center justify-between w-full"
     >
       <div
-        class="flex-1"
+        class="flex-1 text-center"
       >
         Primary
       </div>
@@ -40,7 +39,7 @@ exports[`Button > matches snapshot — primary 1`] = `
 exports[`Button > matches snapshot — with icons 1`] = `
 <div>
   <button
-    class="font-display font-semibold text-base w-full rounded-xl h-controllg transition duration-400 primary cursor-pointer text-white bg-blue border border-blue hover:bg-white hover:border-black  hover:text-black"
+    class="font-display font-semibold text-base w-full rounded-xl h-controllg transition-all duration-400 px-4 primary text-white bg-blue  border-blue border hover:bg-white hover:border-black  hover:text-black cursor-pointer hover:px-3"
   >
     <div
       class="flex items-center justify-between w-full"
@@ -61,7 +60,7 @@ exports[`Button > matches snapshot — with icons 1`] = `
         />
       </svg>
       <div
-        class="flex-1"
+        class="flex-1 text-center"
       >
         With icons
       </div>

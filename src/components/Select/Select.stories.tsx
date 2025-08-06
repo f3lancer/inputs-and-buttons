@@ -8,27 +8,92 @@ const meta: Meta<typeof Select> = {
   title: "Components/Select",
   component: Select,
   args: {
-    label: "Choose an option",
-    helperText: "Select one of the available options.",
-    options: ["Option 1", "Option 2", "Option 3"],
+    options: [
+      { value: "1", label: "Option 1" },
+      { value: "2", label: "Option 2" },
+      { value: "3", label: "Option 3" },
+    ],
   },
 };
 
 export default meta;
+
 type Story = StoryObj<typeof Select>;
 
-export const Default: Story = {
-  render: (args) => {
-    const [value, setValue] = useState("Option 1");
-
-    return <Select {...args} value={value} onChange={val => setValue(val)} />;
-  },
-};
-
-export const Empty: Story = {
+export const WithLabel: Story = {
   render: (args) => {
     const [value, setValue] = useState("");
 
-    return <Select {...args} value={value} onChange={val => setValue(val)} />;
+    return (
+      <Select
+        {...args}
+        value={value}
+        onChange={setValue}
+      />
+    );
+  },
+  args: {
+    label: "Choose an option",
+  },
+};
+
+export const WithoutLabel: Story = {
+  render: (args) => {
+    const [value, setValue] = useState("");
+
+    return (
+      <Select
+        {...args}
+        value={value}
+        onChange={setValue}
+      />
+    );
+  },
+  args: {},
+};
+
+export const Invalid: Story = {
+  render: (args) => {
+    const [value, setValue] = useState("");
+
+    return (
+      <Select
+        {...args}
+        value={value}
+        onChange={setValue}
+      />
+    );
+  },
+  args: {
+    label: "Choose an option",
+    invalid: true,
+  },
+};
+
+export const Predefined: Story = {
+  render: (args) => {
+    const [value, setValue] = useState(args.value || "");
+
+    return (
+      <Select
+        {...args}
+        value={value}
+        onChange={setValue}
+      />
+    );
+  },
+
+  args: {
+    label: "Choose an option",
+    value: "Predefined",
+  },
+};
+
+export const WithDefaultValue: Story = {
+  render: args => <Select {...args} />,
+  args: {
+    label: "Choose an option",
+    defaultValue: "red",
+
   },
 };
