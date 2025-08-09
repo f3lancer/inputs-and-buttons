@@ -1,6 +1,5 @@
 // src/components/Select/Select.stories.tsx
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { useState } from "react";
 
 import { Select } from "./Select";
 
@@ -21,79 +20,36 @@ export default meta;
 type Story = StoryObj<typeof Select>;
 
 export const WithLabel: Story = {
-  render: (args) => {
-    const [value, setValue] = useState("");
-
-    return (
-      <Select
-        {...args}
-        value={value}
-        onChange={setValue}
-      />
-    );
-  },
   args: {
     label: "Choose an option",
+    defaultValue: "1",
   },
 };
 
 export const WithoutLabel: Story = {
-  render: (args) => {
-    const [value, setValue] = useState("");
-
-    return (
-      <Select
-        {...args}
-        value={value}
-        onChange={setValue}
-      />
-    );
+  args: {
+    defaultValue: "1",
   },
-  args: {},
 };
 
 export const Invalid: Story = {
-  render: (args) => {
-    const [value, setValue] = useState("");
-
-    return (
-      <Select
-        {...args}
-        value={value}
-        onChange={setValue}
-      />
-    );
-  },
   args: {
     label: "Choose an option",
     invalid: true,
+    defaultValue: "1",
   },
 };
 
 export const Predefined: Story = {
-  render: (args) => {
-    const [value, setValue] = useState(args.value || "");
-
-    return (
-      <Select
-        {...args}
-        value={value}
-        onChange={setValue}
-      />
-    );
-  },
-
   args: {
     label: "Choose an option",
-    value: "Predefined",
+    defaultValue: "1",
   },
 };
 
 export const WithDefaultValue: Story = {
-  render: args => <Select {...args} />,
   args: {
     label: "Choose an option",
     defaultValue: "red",
-
   },
 };

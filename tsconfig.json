@@ -7,16 +7,3 @@
   },
   "include": ["src", "**/*.mdx"]
 }
-// {
-//   "compilerOptions": {
-//     "jsx": "preserve",
-//     "allowJs": true,
-//     "resolveJsonModule": true,
-//     "esModuleInterop": true
-//   },
-//   "include": ["src", "**/*.mdx"],
-//   "references": [
-//     { "path": "./tsconfig.app.json" },
-//     { "path": "./tsconfig.node.json" }
-//   ]
-// }

@@ -10,7 +10,7 @@ exports[`Select > matches snapshot — default state 1`] = `
       tabindex="0"
     >
       <div
-        class="font-display font-normal text-[11px] leading-[150%] text-dark-grey"
+        class="font-display font-normal text-[11px] leading-[150%] invalid-false text-dark-grey"
       >
         Choose option
       </div>
@@ -38,8 +38,8 @@ exports[`Select > matches snapshot — default state 1`] = `
         </svg>
       </div>
     </div>
-    <div
-      class="relative"
+    <input
+      type="hidden"
     />
   </div>
 </div>
@@ -55,7 +55,7 @@ exports[`Select > matches snapshot — open dropdown 1`] = `
       tabindex="0"
     >
       <div
-        class="font-display font-normal text-[11px] leading-[150%] text-dark-grey"
+        class="font-display font-normal text-[11px] leading-[150%] invalid-false text-dark-grey"
       >
         Choose option
       </div>
@@ -106,6 +106,9 @@ exports[`Select > matches snapshot — open dropdown 1`] = `
         </div>
       </div>
     </div>
+    <input
+      type="hidden"
+    />
   </div>
 </div>
 `;
@@ -116,11 +119,11 @@ exports[`Select > matches snapshot — selected option 1`] = `
     class="relative flex flex-col gap-[7px] "
   >
     <div
-      class="class-select h-controllg bg-grey rounded-xl border px-4 py-1.5 text-left cursor-pointer transition-all border-grey"
+      class="class-select h-controllg bg-grey rounded-xl border px-4 py-1.5 text-left cursor-pointer transition-all [box-shadow:0_0_0_1px_blue] border-blue"
       tabindex="0"
     >
       <div
-        class="font-display font-normal text-[11px] leading-[150%] text-dark-grey"
+        class="font-display font-normal text-[11px] leading-[150%] invalid-false text-dark-grey"
       >
         Choose option
       </div>
@@ -134,7 +137,7 @@ exports[`Select > matches snapshot — selected option 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="ml-2 w-6 h-6 text-gray-800 transition-transform duration-300"
+          class="ml-2 w-6 h-6 text-gray-800 transition-transform duration-300 rotate-180"
           data-slot="icon"
           fill="none"
           stroke="currentColor"
@@ -152,6 +155,29 @@ exports[`Select > matches snapshot — selected option 1`] = `
     </div>
     <div
       class="relative"
+    >
+      <div
+        class="py-1 px-2 border border-grey absolute z-[10] rounded-xl bg-white w-full"
+      >
+        <div
+          class="cursor-pointer h-controlsm flex items-center px-2 transition duration-300 rounded-xl hover:bg-grey"
+        >
+          Option 1
+        </div>
+        <div
+          class="cursor-pointer h-controlsm flex items-center px-2 transition duration-300 rounded-xl hover:bg-grey"
+        >
+          Option 2
+        </div>
+        <div
+          class="cursor-pointer h-controlsm flex items-center px-2 transition duration-300 rounded-xl hover:bg-grey"
+        >
+          Option 3
+        </div>
+      </div>
+    </div>
+    <input
+      type="hidden"
     />
   </div>
 </div>

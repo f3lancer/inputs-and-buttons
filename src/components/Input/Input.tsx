@@ -21,7 +21,7 @@ peer-focus:text-blue peer-focus:text-[11px] peer-focus:top-1  peer-focus:-transl
     variants: {
       invalid: {
         false: "invalid-false text-dark-grey",
-        true: "invalid text-dark-grey",
+        true: "invalid text-red",
       },
       hasValue: {
         false: "hasValue-false top-1/2 -translate-y-1/2 ",
@@ -57,15 +57,12 @@ export const Input: React.FC<InputProps> = ({
     <label className="group relative flex">
       <input
         className={inputVariants({ invalid })}
-        // {...(value !== undefined ? { value } : { defaultValue })}
         value={value}
         defaultValue={defaultValue}
         onChange={handleChange}
         {...props}
       />
-      <div className={labelVariants({ invalid, hasValue })}>
-        {label}
-      </div>
+      {label && <div className={labelVariants({ invalid, hasValue })}>{label}</div>}
     </label>
   );
 };

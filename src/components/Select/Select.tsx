@@ -1,6 +1,6 @@
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
-import React, { useState } from "react";
+import React, { useState, useMemo, useEffect, useRef } from "react";
 
 const selectWrapper = cva(
   "class-select h-controllg bg-grey rounded-xl border px-4 py-1.5 text-left cursor-pointer transition-all",
@@ -9,6 +9,18 @@ const selectWrapper = cva(
       open: {
         true: "[box-shadow:0_0_0_1px_blue] border-blue",
         false: "border-grey",
+      },
+    },
+  },
+);
+
+const labelVariants = cva(
+  `font-display font-normal text-[11px] leading-[150%]`,
+  {
+    variants: {
+      invalid: {
+        false: "invalid-false text-dark-grey",
+        true: "invalid text-red",
       },
     },
   },
@@ -48,6 +60,7 @@ export const Select: React.FC<SelectProps> = ({
   defaultValue,
   name,
   onChange,
+  invalid = false,
 
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -55,45 +68,61 @@ export const Select: React.FC<SelectProps> = ({
 
   const currentValue = value ?? internalValue;
 
+  const selectedOption = useMemo(
+    () => options.find(opt => opt.value === currentValue),
+    [options, currentValue],
+  );
+
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function onDocMouseDown(e: MouseEvent) {
+      if (rootRef.current && !rootRef.current.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", onDocMouseDown);
+    return () => document.removeEventListener("mousedown", onDocMouseDown);
+  }, []);
+
   return (
-    <div className="relative flex flex-col gap-[7px] ">
+    <div ref={rootRef} className="relative flex flex-col gap-[7px] ">
+
       <div
         className={selectWrapper({ open: isOpen })}
         onClick={() => setIsOpen(!isOpen)}
         tabIndex={0}
-        onBlur={() => setIsOpen(false)}
       >
-        {label && <div className="font-display font-normal text-[11px] leading-[150%] text-dark-grey">{label}</div>}
+        {label && <div className={labelVariants({ invalid })}>{label}</div>}
         <div className="font-display font-normal text-base leading-[150%] text-black">
-          {options.find(opt => opt.value === currentValue)?.label ?? currentValue}
+          {selectedOption?.label ?? currentValue}
         </div>
         <div className="absolute right-4 top-4"><ChevronDownIcon className={iconStyle({ open: isOpen })} /></div>
       </div>
-      <div className="relative">
-        {isOpen && (
+      {isOpen && (
+        <div className="relative">
           <div className="py-1 px-2 border border-grey absolute z-[10] rounded-xl bg-white w-full">
             {options.map(opt => (
               <div
                 key={opt.value}
                 className="cursor-pointer h-controlsm flex items-center px-2 transition duration-300 rounded-xl hover:bg-grey"
-                onMouseDown={() => {
-                  setIsOpen(false);
-                  // (onChange ? onChange(opt.value) : setInternalValue(opt.value));
+                onClick={() => {
                   if (onChange) {
                     onChange(opt.value);
                   }
                   else {
                     setInternalValue(opt.value);
                   }
+                  setIsOpen(false);
                 }}
               >
                 {opt.label}
               </div>
             ))}
           </div>
-        )}
-        {name && (<input type="hidden" name={name} value={value} />)}
-      </div>
+        </div>
+      )}
+      <input type="hidden" name={name} defaultValue={selectedOption?.value} />
     </div>
   );
 };
