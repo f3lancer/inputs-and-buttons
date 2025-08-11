@@ -68,7 +68,7 @@ export const ControlledForm = () => {
 };
 
 const submit = (
-  _prevState: { success: boolean; errors: { name?: string; gender?: string } },
+  _prevState,
   formData: FormData) => {
   const values = {
     name: formData.get("name") as string,
@@ -83,26 +83,43 @@ const submit = (
     errors.gender = "Gender is required";
   }
 
-  console.log("Form submitted with values:", values);
+  const success = Object.keys(errors).length === 0;
 
-  return { success: Object.keys(errors).length === 0, errors };
+  if (success) {
+    console.log("Form submitted with values:", values);
+  }
+
+  return { success, errors };
 };
 
 export const UncontrolledForm = () => {
   const [{ errors }, submitAction] = useActionState(submit, { success: true, errors: {} });
+  const [submitted, setSubmitted] = React.useState(false);
 
   return (
-    <form className="flex flex-col gap-4" action={submitAction}>
+    <form
+      className="flex flex-col gap-4"
+      action={submitAction}
+      onSubmit={() => setSubmitted(true)}
+    >
       <div>
-        <Input name="name" label="Name" />
-        {errors.name && <FieldErrorMessage>{errors.name}</FieldErrorMessage>}
+        <Input
+          name="name"
+          label="Name"
+          invalid={submitted && !!errors.name}
+        />
+        {submitted && errors.name && <FieldErrorMessage>{errors.name}</FieldErrorMessage>}
       </div>
 
       <div>
-        <Select name="gender" label="Gender" options={GENDER_OPTIONS} />
-        {errors.gender && <FieldErrorMessage>{errors.gender}</FieldErrorMessage>}
+        <Select
+          name="gender"
+          label="Choose the Gender"
+          options={GENDER_OPTIONS}
+          invalid={submitted && !!errors.gender}
+        />
+        {submitted && errors.gender && <FieldErrorMessage>{errors.gender}</FieldErrorMessage>}
       </div>
-
       <Button type="submit">Submit</Button>
     </form>
   );
