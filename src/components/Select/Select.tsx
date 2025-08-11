@@ -2,9 +2,10 @@ import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { cva } from "class-variance-authority";
 import React, { useState, useMemo, useRef } from "react";
 
+import { useClickOutside } from "../../hooks/useClickOutside";
 import { Label } from "../Label";
 
-import { useClickOutside } from "@/hooks/useClickOutside";
+// import { useClickOutside } from "@/hooks/useClickOutside";
 
 const selectWrapper = cva(
   "class-select h-controllg bg-grey rounded-xl flex flex-col border px-4 py-1.5 pt-1.5 pb-2.5 text-left cursor-pointer transition-all",

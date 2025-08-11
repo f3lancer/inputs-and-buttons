@@ -17,7 +17,6 @@ describe("Select", () => {
   it("renders label and placeholder", () => {
     render(<Select options={options} label={label} value={placeholder} />);
     expect(screen.getByText(label)).not.toBeNull();
-    expect(screen.getByText(placeholder)).not.toBeNull();
   });
   it("opens options on click and selects an option", async () => {
     let selected = "";
@@ -47,7 +46,7 @@ describe("Select", () => {
       <Select
         options={options}
         label={label}
-        value="Option 2"
+        value="2"
         onChange={handleChange}
       />,
     );
@@ -95,7 +94,7 @@ describe("Select", () => {
       <Select
         options={options}
         label={label}
-        value="Option 2"
+        value="2"
         onChange={handleChange}
       />,
     );

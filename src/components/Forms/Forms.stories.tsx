@@ -68,7 +68,7 @@ export const ControlledForm = () => {
 };
 
 const submit = (
-  _prevState,
+  _prevState: unknown,
   formData: FormData) => {
   const values = {
     name: formData.get("name") as string,

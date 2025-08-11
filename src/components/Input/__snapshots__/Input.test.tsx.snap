@@ -12,7 +12,7 @@ exports[`Input > matches snapshot — default 1`] = `
     />
     <div
       class="class-label font-normal font-display leading-[150%] absolute z-[1] transition-all duration-300 px-4
-peer-focus:text-blue peer-focus:text-[11px] peer-focus:top-1  peer-focus:-translate-y-0 left-0 text-xs11 invalid-false text-dark-grey hasValue-false top-1/2 -translate-y-1/2 "
+peer-focus:text-blue peer-focus:text-[11px] peer-focus:top-1 peer-focus:-translate-y-0 left-0 text-xs11 invalid-false text-dark-grey hasValue-false top-1/2 -translate-y-1/2"
     >
       Email
     </div>
@@ -32,7 +32,7 @@ exports[`Input > matches snapshot — with error 1`] = `
     />
     <div
       class="class-label font-normal font-display leading-[150%] absolute z-[1] transition-all duration-300 px-4
-peer-focus:text-blue peer-focus:text-[11px] peer-focus:top-1  peer-focus:-translate-y-0 left-0 text-xs11 invalid text-red hasValue-false top-1/2 -translate-y-1/2 "
+peer-focus:text-blue peer-focus:text-[11px] peer-focus:top-1 peer-focus:-translate-y-0 left-0 text-xs11 invalid text-red hasValue-false top-1/2 -translate-y-1/2"
     >
       Username
     </div>
