@@ -6,7 +6,7 @@ import { Label } from "../Label";
 const inputVariants = cva(
   `class-input peer font-display h-controllg   
    font-normal text-base bg-grey leading-[150%] text-black px-4 relative rounded-xl transition-all 
-   duration-300 focus:outline-none focus:border-blue focus:shadow-[0_0_0_1px_var(--color-blue)] w-full`,
+   duration-300 focus:outline-none focus:border-blue focus:shadow-[0_0_0_1px_var(--color-blue)]`,
   {
     variants: {
       invalid: {
@@ -20,6 +20,7 @@ const inputVariants = cva(
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   invalid?: boolean;
+  classLable?: string;
 }
 
 export const Input: React.FC<InputProps> = ({
@@ -27,6 +28,8 @@ export const Input: React.FC<InputProps> = ({
   invalid = false,
   value,
   defaultValue,
+  classLable,
+  className,
   onChange,
   ...props
 }) => {
@@ -40,15 +43,15 @@ export const Input: React.FC<InputProps> = ({
   };
 
   return (
-    <label className="group relative flex">
+    <label className="group relative inline-block w-full">
       <input
-        className={inputVariants({ invalid })}
+        {...props}
+        className={`${inputVariants({ invalid })} ${className ?? ""}`}
         value={value}
         defaultValue={defaultValue}
         onChange={handleChange}
-        {...props}
       />
-      <Label label={label} invalid={invalid} hasValue={hasValue} />
+      {label && <Label invalid={invalid} hasValue={hasValue} className={classLable}>{label}</Label>}
     </label>
   );
 };

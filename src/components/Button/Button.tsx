@@ -3,7 +3,7 @@ import { cva } from "class-variance-authority";
 import React from "react";
 
 const buttonVariants = cva(
-  "font-display font-semibold text-base w-full rounded-xl h-controllg transition-all duration-400 px-4 cursor-pointer",
+  "font-display font-semibold text-base rounded-xl h-controllg transition-all duration-400 px-4 cursor-pointer",
   {
     variants: {
       variant: {
@@ -37,25 +37,21 @@ export const Button: React.FC<ButtonProps> = ({
   children,
   leftIcon,
   rightIcon,
+  className,
   asChild = false,
   ...props
 }) => {
   const Comp: React.ElementType = asChild ? Slot : "button";
 
-  const computedClassName = buttonVariants({
-    variant: variant,
-    disabled,
-  });
-
   return (
     <Comp
-      className={computedClassName}
+      className={`${buttonVariants({ variant: variant, disabled })} ${className ?? ""}`}
       disabled={disabled}
       aria-disabled={disabled || undefined}
       tabIndex={disabled ? -1 : undefined}
       {...props}
     >
-      <div className="flex items-center justify-between w-full">
+      <div className="flex items-center justify-between">
         {leftIcon}
         <div className="flex-1 text-center">{children}</div>
         {rightIcon}

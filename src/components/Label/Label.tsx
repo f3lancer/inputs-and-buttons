@@ -18,20 +18,25 @@ peer-focus:text-blue peer-focus:text-[11px] peer-focus:top-1 peer-focus:-transla
   },
 );
 
-type LabelProps = {
-  label?: string;
+interface LabelProps extends React.HTMLAttributes<HTMLDivElement> {
   invalid?: boolean;
   hasValue?: boolean;
+  className?: string;
 };
 
 export const Label: React.FC<LabelProps> = ({
-  label,
   invalid = false,
   hasValue = false,
+  className,
+  children,
+  ...props
 }) => {
-  if (!label) return null;
-
   return (
-    <div className={labelVariants({ invalid, hasValue })}>{label}</div>
+    <div
+      className={`${labelVariants({ invalid, hasValue })} ${className ?? ""}`}
+      {...props}
+    >
+      {children}
+    </div>
   );
 };
