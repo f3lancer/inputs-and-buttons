@@ -53,3 +53,11 @@ export const PrefilledInvalid: Story = {
     invalid: true,
   },
 };
+
+export const WithFullWidth: Story = {
+  args: {
+    label: "Your name",
+    defaultValue: "John Doe",
+    className: "w-full",
+  },
+};

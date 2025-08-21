@@ -83,3 +83,13 @@ describe("Button", () => {
     expect(screen.getByTestId("right")).toBeInTheDocument();
   });
 });
+
+it("applies className=w-full to the root element", () => {
+  render(
+    <Button variant="primary" className="w-full">
+      Primary
+    </Button>,
+  );
+  const btn = screen.getByRole("button", { name: "Primary" });
+  expect(btn).toHaveClass("w-full");
+});

@@ -21,22 +21,14 @@ peer-focus:text-blue peer-focus:text-[11px] peer-focus:top-1 peer-focus:-transla
 interface LabelProps extends React.HTMLAttributes<HTMLDivElement> {
   invalid?: boolean;
   hasValue?: boolean;
-  className?: string;
+  // className?: string;
 };
 
 export const Label: React.FC<LabelProps> = ({
   invalid = false,
   hasValue = false,
-  className,
-  children,
+  // className,
   ...props
 }) => {
-  return (
-    <div
-      className={`${labelVariants({ invalid, hasValue })} ${className ?? ""}`}
-      {...props}
-    >
-      {children}
-    </div>
-  );
+  return <div className={`${labelVariants({ invalid, hasValue })}`} {...props} />;
 };

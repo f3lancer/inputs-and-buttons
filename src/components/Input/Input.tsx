@@ -1,4 +1,4 @@
-import { cva } from "class-variance-authority";
+import { cva, cx } from "class-variance-authority";
 import { useState } from "react";
 
 import { Label } from "../Label";
@@ -20,7 +20,6 @@ const inputVariants = cva(
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   invalid?: boolean;
-  classLable?: string;
 }
 
 export const Input: React.FC<InputProps> = ({
@@ -28,7 +27,6 @@ export const Input: React.FC<InputProps> = ({
   invalid = false,
   value,
   defaultValue,
-  classLable,
   className,
   onChange,
   ...props
@@ -43,15 +41,15 @@ export const Input: React.FC<InputProps> = ({
   };
 
   return (
-    <label className="group relative inline-block w-full">
+    <label className={cx("group relative inline-block", className)}>
       <input
         {...props}
-        className={`${inputVariants({ invalid })} ${className ?? ""}`}
+        className={inputVariants({ invalid, className })}
         value={value}
         defaultValue={defaultValue}
         onChange={handleChange}
       />
-      {label && <Label invalid={invalid} hasValue={hasValue} className={classLable}>{label}</Label>}
+      {label && <Label invalid={invalid} hasValue={hasValue}>{label}</Label>}
     </label>
   );
 };

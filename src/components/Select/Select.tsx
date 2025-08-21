@@ -6,7 +6,7 @@ import { useClickOutside } from "../../hooks/useClickOutside";
 import { Label } from "../Label";
 
 const buttonVariants = cva(
-  "class-select h-controllg bg-grey rounded-xl flex flex-col border px-4 py-1.5 pt-1.5 pb-2.5 text-left cursor-pointer transition-all relative",
+  "class-select h-controllg bg-grey rounded-xl flex flex-col border px-4 py-1.5 pt-1.5 pb-2.5 text-left cursor-pointer transition-all relative w-fit pr-12",
   {
     variants: {
       open: {
@@ -42,7 +42,6 @@ interface SelectProps {
   invalid?: boolean;
   name?: string;
   className?: string;
-  classLable?: string;
   onChange?: (value: string) => void;
 };
 
@@ -52,7 +51,7 @@ export const Select: React.FC<SelectProps> = ({
   value,
   defaultValue,
   name,
-  classLable,
+  // classLable,
   className,
   onChange,
   invalid = false,
@@ -73,13 +72,12 @@ export const Select: React.FC<SelectProps> = ({
 
   return (
     <div ref={rootRef} className="flex flex-col gap-[7px] relative">
-
       <button
-        className={`${buttonVariants({ open: isOpen })} ${className ?? ""}`}
-        onClick={() => setIsOpen(isOpen => !isOpen)}
+        className={`${buttonVariants({ open: isOpen, className })} }`}
+        onClick={() => setIsOpen(prev => !prev)}
         tabIndex={0}
       >
-        {label && <Label invalid={invalid} hasValue={!!selectedOption} className={classLable}>{label}</Label>}
+        {label && <Label invalid={invalid} hasValue={true}>{label}</Label>}
         <div className="font-display font-normal text-base leading-[150%] text-black mt-auto">
           {selectedOption?.label}
         </div>

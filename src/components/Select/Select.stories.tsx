@@ -8,6 +8,7 @@ const meta: Meta<typeof Select> = {
   component: Select,
   args: {
     options: [
+      { value: "", label: "Choose" },
       { value: "1", label: "Option 1" },
       { value: "2", label: "Option 2" },
       { value: "3", label: "Option 3" },
@@ -51,5 +52,13 @@ export const WithDefaultValue: Story = {
   args: {
     label: "Choose an option",
     defaultValue: "red",
+  },
+};
+
+export const WithFullWidth: Story = {
+  args: {
+    label: "Choose an option",
+    // defaultValue: "1",
+    className: "w-full",
   },
 };

@@ -1,5 +1,5 @@
 import { Slot } from "@radix-ui/react-slot";
-import { cva } from "class-variance-authority";
+import { cva, type VariantProps } from "class-variance-authority";
 import React from "react";
 
 const buttonVariants = cva(
@@ -19,21 +19,25 @@ const buttonVariants = cva(
         false: null,
       },
     },
+    defaultVariants: {
+      disabled: false,
+      variant: "primary",
+    },
   },
 );
 
-type ButtonVariant = "primary" | "secondary" | "outline" | "destructive" | "link" | "ghost";
-
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: ButtonVariant;
+export interface ButtonProps
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "disabled">,
+  VariantProps<typeof buttonVariants> {
+  disabled?: boolean;
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
   asChild?: boolean;
-};
+}
 
 export const Button: React.FC<ButtonProps> = ({
   disabled = false,
-  variant = "primary",
+  variant,
   children,
   leftIcon,
   rightIcon,
@@ -45,7 +49,7 @@ export const Button: React.FC<ButtonProps> = ({
 
   return (
     <Comp
-      className={`${buttonVariants({ variant: variant, disabled })} ${className ?? ""}`}
+      className={buttonVariants({ variant, disabled, className })}
       disabled={disabled}
       aria-disabled={disabled || undefined}
       tabIndex={disabled ? -1 : undefined}
@@ -53,7 +57,7 @@ export const Button: React.FC<ButtonProps> = ({
     >
       <div className="flex items-center justify-between">
         {leftIcon}
-        <div className="flex-1 text-center">{children}</div>
+        <div className="flex-1 text-center px-4">{children}</div>
         {rightIcon}
       </div>
     </Comp>

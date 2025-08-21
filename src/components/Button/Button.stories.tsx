@@ -17,7 +17,7 @@ type Story = StoryObj<typeof Button>;
 export const Default: Story = {
   args: {},
   render: args => (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 items-center">
       <Button {...args} variant="primary">
         Primary
       </Button>
@@ -46,7 +46,7 @@ export const WithIcons: Story = {
     rightIcon: <ArrowRightIcon className="w-5 h-5" />,
   },
   render: args => (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 items-center">
       <Button {...args} variant="primary">
         Primary
       </Button>
@@ -74,7 +74,7 @@ export const DisabledButtons: Story = {
     disabled: true,
   },
   render: args => (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 items-center">
       <Button {...args} variant="primary">
         Primary
       </Button>
@@ -99,8 +99,35 @@ export const DisabledButtons: Story = {
 
 export const AsLink: Story = {
   render: () => (
-    <Button asChild>
-      <a href="www.google.com">Click me</a>
-    </Button>
+    <div className="flex flex-col gap-4 items-center">
+      <Button asChild>
+        <a href="www.google.com">Click me</a>
+      </Button>
+    </div>
+  ),
+};
+
+export const WithFullWidth: Story = {
+  render: () => (
+    <div className="flex gap-4 flex-col items-center">
+      <Button variant="primary" className="w-full">
+        Primary
+      </Button>
+      <Button variant="secondary" className="w-full">
+        Secondary
+      </Button>
+      <Button variant="outline" className="w-full">
+        Outline
+      </Button>
+      <Button variant="destructive" className="w-full">
+        Destructive
+      </Button>
+      <Button variant="ghost" className="w-full">
+        Ghost
+      </Button>
+      <Button variant="link" className="w-full">
+        Link
+      </Button>
+    </div>
   ),
 };

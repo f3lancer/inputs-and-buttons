@@ -6,12 +6,12 @@ exports[`Select > matches snapshot — default state 1`] = `
     class="flex flex-col gap-[7px] relative"
   >
     <button
-      class="class-select h-controllg bg-grey rounded-xl flex flex-col border px-4 py-1.5 pt-1.5 pb-2.5 text-left cursor-pointer transition-all relative border-grey "
+      class="class-select h-controllg bg-grey rounded-xl flex flex-col border px-4 py-1.5 pt-1.5 pb-2.5 text-left cursor-pointer transition-all relative w-fit pr-12 border-grey }"
       tabindex="0"
     >
       <div
         class="class-label font-normal font-display leading-[150%] absolute z-[1] transition-all duration-300 px-4
-peer-focus:text-blue peer-focus:text-[11px] peer-focus:top-1 peer-focus:-translate-y-0 left-0 text-xs11 invalid-false text-dark-grey hasValue-false top-1/2 -translate-y-1/2 "
+peer-focus:text-blue peer-focus:text-[11px] peer-focus:top-1 peer-focus:-translate-y-0 left-0 text-xs11 invalid-false text-dark-grey hasValue text-[11px] top-1"
       >
         Choose option
       </div>
@@ -52,12 +52,12 @@ exports[`Select > matches snapshot — open dropdown 1`] = `
     class="flex flex-col gap-[7px] relative"
   >
     <button
-      class="class-select h-controllg bg-grey rounded-xl flex flex-col border px-4 py-1.5 pt-1.5 pb-2.5 text-left cursor-pointer transition-all relative [box-shadow:0_0_0_1px_blue] border-blue "
+      class="class-select h-controllg bg-grey rounded-xl flex flex-col border px-4 py-1.5 pt-1.5 pb-2.5 text-left cursor-pointer transition-all relative w-fit pr-12 [box-shadow:0_0_0_1px_blue] border-blue }"
       tabindex="0"
     >
       <div
         class="class-label font-normal font-display leading-[150%] absolute z-[1] transition-all duration-300 px-4
-peer-focus:text-blue peer-focus:text-[11px] peer-focus:top-1 peer-focus:-translate-y-0 left-0 text-xs11 invalid-false text-dark-grey hasValue-false top-1/2 -translate-y-1/2 "
+peer-focus:text-blue peer-focus:text-[11px] peer-focus:top-1 peer-focus:-translate-y-0 left-0 text-xs11 invalid-false text-dark-grey hasValue text-[11px] top-1"
       >
         Choose option
       </div>
@@ -121,12 +121,12 @@ exports[`Select > matches snapshot — selected option 1`] = `
     class="flex flex-col gap-[7px] relative"
   >
     <button
-      class="class-select h-controllg bg-grey rounded-xl flex flex-col border px-4 py-1.5 pt-1.5 pb-2.5 text-left cursor-pointer transition-all relative [box-shadow:0_0_0_1px_blue] border-blue "
+      class="class-select h-controllg bg-grey rounded-xl flex flex-col border px-4 py-1.5 pt-1.5 pb-2.5 text-left cursor-pointer transition-all relative w-fit pr-12 [box-shadow:0_0_0_1px_blue] border-blue }"
       tabindex="0"
     >
       <div
         class="class-label font-normal font-display leading-[150%] absolute z-[1] transition-all duration-300 px-4
-peer-focus:text-blue peer-focus:text-[11px] peer-focus:top-1 peer-focus:-translate-y-0 left-0 text-xs11 invalid-false text-dark-grey hasValue text-[11px] top-1 "
+peer-focus:text-blue peer-focus:text-[11px] peer-focus:top-1 peer-focus:-translate-y-0 left-0 text-xs11 invalid-false text-dark-grey hasValue text-[11px] top-1"
       >
         Choose option
       </div>
