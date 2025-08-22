@@ -3,7 +3,7 @@
 exports[`Button > matches snapshot — as link 1`] = `
 <div>
   <div
-    class="font-display font-semibold text-base rounded-xl h-controllg transition-all duration-400 px-4 cursor-pointer text-white bg-blue hover:bg-blue/50 flex items-center justify-between"
+    class="font-display font-semibold inline text-base rounded-xl h-controllg transition-all duration-400 px-4 cursor-pointer text-white bg-blue hover:bg-blue/50 flex items-center justify-between"
   >
     <div
       class="flex-1 text-center px-4"
@@ -21,7 +21,7 @@ exports[`Button > matches snapshot — as link 1`] = `
 exports[`Button > matches snapshot — primary 1`] = `
 <div>
   <button
-    class="font-display font-semibold text-base rounded-xl h-controllg transition-all duration-400 px-4 cursor-pointer text-white bg-blue hover:bg-blue/50"
+    class="font-display font-semibold inline text-base rounded-xl h-controllg transition-all duration-400 px-4 cursor-pointer text-white bg-blue hover:bg-blue/50"
   >
     <div
       class="flex items-center justify-between"
@@ -39,7 +39,7 @@ exports[`Button > matches snapshot — primary 1`] = `
 exports[`Button > matches snapshot — with icons 1`] = `
 <div>
   <button
-    class="font-display font-semibold text-base rounded-xl h-controllg transition-all duration-400 px-4 cursor-pointer text-white bg-blue hover:bg-blue/50"
+    class="font-display font-semibold inline text-base rounded-xl h-controllg transition-all duration-400 px-4 cursor-pointer text-white bg-blue hover:bg-blue/50"
   >
     <div
       class="flex items-center justify-between"

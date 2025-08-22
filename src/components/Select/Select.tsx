@@ -1,5 +1,5 @@
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
-import { cva } from "class-variance-authority";
+import { cva, type VariantProps } from "class-variance-authority";
 import React, { useState, useMemo, useRef } from "react";
 
 import { useClickOutside } from "../../hooks/useClickOutside";
@@ -14,6 +14,9 @@ const buttonVariants = cva(
         false: "border-grey",
       },
     },
+    defaultVariants: {
+      open: false,
+    },
   },
 );
 
@@ -26,6 +29,9 @@ const iconVariants = cva(
         false: "",
       },
     },
+    defaultVariants: {
+      open: false,
+    },
   },
 );
 
@@ -34,7 +40,8 @@ type SelectOptionType = {
   label: string;
 };
 
-interface SelectProps {
+interface SelectProps
+  extends VariantProps<typeof buttonVariants> {
   options: SelectOptionType[];
   label?: string;
   value?: string;
@@ -51,7 +58,6 @@ export const Select: React.FC<SelectProps> = ({
   value,
   defaultValue,
   name,
-  // classLable,
   className,
   onChange,
   invalid = false,
@@ -71,13 +77,13 @@ export const Select: React.FC<SelectProps> = ({
   useClickOutside(rootRef, () => setIsOpen(false));
 
   return (
-    <div ref={rootRef} className="flex flex-col gap-[7px] relative">
+    <div ref={rootRef} className="relative inline">
       <button
         className={`${buttonVariants({ open: isOpen, className })} }`}
         onClick={() => setIsOpen(prev => !prev)}
         tabIndex={0}
       >
-        {label && <Label invalid={invalid} hasValue={true}>{label}</Label>}
+        {label && <Label invalid={invalid}>{label}</Label>}
         <div className="font-display font-normal text-base leading-[150%] text-black mt-auto">
           {selectedOption?.label}
         </div>

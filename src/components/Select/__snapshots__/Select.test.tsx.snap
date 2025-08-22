@@ -3,7 +3,7 @@
 exports[`Select > matches snapshot — default state 1`] = `
 <div>
   <div
-    class="flex flex-col gap-[7px] relative"
+    class="relative inline"
   >
     <button
       class="class-select h-controllg bg-grey rounded-xl flex flex-col border px-4 py-1.5 pt-1.5 pb-2.5 text-left cursor-pointer transition-all relative w-fit pr-12 border-grey }"
@@ -49,7 +49,7 @@ peer-focus:text-blue peer-focus:text-[11px] peer-focus:top-1 peer-focus:-transla
 exports[`Select > matches snapshot — open dropdown 1`] = `
 <div>
   <div
-    class="flex flex-col gap-[7px] relative"
+    class="relative inline"
   >
     <button
       class="class-select h-controllg bg-grey rounded-xl flex flex-col border px-4 py-1.5 pt-1.5 pb-2.5 text-left cursor-pointer transition-all relative w-fit pr-12 [box-shadow:0_0_0_1px_blue] border-blue }"
@@ -118,7 +118,7 @@ peer-focus:text-blue peer-focus:text-[11px] peer-focus:top-1 peer-focus:-transla
 exports[`Select > matches snapshot — selected option 1`] = `
 <div>
   <div
-    class="flex flex-col gap-[7px] relative"
+    class="relative inline"
   >
     <button
       class="class-select h-controllg bg-grey rounded-xl flex flex-col border px-4 py-1.5 pt-1.5 pb-2.5 text-left cursor-pointer transition-all relative w-fit pr-12 [box-shadow:0_0_0_1px_blue] border-blue }"

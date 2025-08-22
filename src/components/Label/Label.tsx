@@ -1,4 +1,4 @@
-import { cva } from "class-variance-authority";
+import { cva, type VariantProps } from "class-variance-authority";
 import React from "react";
 
 const labelVariants = cva(
@@ -13,22 +13,24 @@ peer-focus:text-blue peer-focus:text-[11px] peer-focus:top-1 peer-focus:-transla
       hasValue: {
         false: "hasValue-false top-1/2 -translate-y-1/2",
         true: "hasValue text-[11px] top-1",
+        // true: "hasValue text-[11px] top-[-12px]",
       },
+    },
+    defaultVariants: {
+      invalid: false,
+      hasValue: true,
     },
   },
 );
 
-interface LabelProps extends React.HTMLAttributes<HTMLDivElement> {
-  invalid?: boolean;
-  hasValue?: boolean;
-  // className?: string;
-};
+interface LabelProps extends React.HTMLAttributes<HTMLDivElement>,
+  VariantProps<typeof labelVariants> {};
 
 export const Label: React.FC<LabelProps> = ({
-  invalid = false,
-  hasValue = false,
-  // className,
+  invalid,
+  hasValue,
+  className,
   ...props
 }) => {
-  return <div className={`${labelVariants({ invalid, hasValue })}`} {...props} />;
+  return <div className={`${labelVariants({ invalid, hasValue, className })}`} {...props} />;
 };

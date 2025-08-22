@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import React from "react";
 
 const buttonVariants = cva(
-  "font-display font-semibold text-base rounded-xl h-controllg transition-all duration-400 px-4 cursor-pointer",
+  "font-display font-semibold inline text-base rounded-xl h-controllg transition-all duration-400 px-4 cursor-pointer",
   {
     variants: {
       variant: {
@@ -27,7 +27,7 @@ const buttonVariants = cva(
 );
 
 export interface ButtonProps
-  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "disabled">,
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
   VariantProps<typeof buttonVariants> {
   disabled?: boolean;
   leftIcon?: React.ReactNode;
@@ -36,7 +36,7 @@ export interface ButtonProps
 }
 
 export const Button: React.FC<ButtonProps> = ({
-  disabled = false,
+  disabled,
   variant,
   children,
   leftIcon,

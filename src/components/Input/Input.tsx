@@ -1,4 +1,4 @@
-import { cva, cx } from "class-variance-authority";
+import { cva, cx, type VariantProps } from "class-variance-authority";
 import { useState } from "react";
 
 import { Label } from "../Label";
@@ -14,17 +14,21 @@ const inputVariants = cva(
         true: "border border-red shadow-[0_0_0_1px_var(--color-red)]",
       },
     },
+    defaultVariants: {
+      invalid: false,
+    },
   },
 );
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface InputProps
+  extends React.InputHTMLAttributes<HTMLInputElement>,
+  VariantProps<typeof inputVariants> {
   label?: string;
-  invalid?: boolean;
 }
 
 export const Input: React.FC<InputProps> = ({
   label,
-  invalid = false,
+  invalid,
   value,
   defaultValue,
   className,
