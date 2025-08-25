@@ -13,7 +13,6 @@ peer-focus:text-blue peer-focus:text-[11px] peer-focus:top-1 peer-focus:-transla
       hasValue: {
         false: "hasValue-false top-1/2 -translate-y-1/2",
         true: "hasValue text-[11px] top-1",
-        // true: "hasValue text-[11px] top-[-12px]",
       },
     },
     defaultVariants: {
@@ -32,5 +31,5 @@ export const Label: React.FC<LabelProps> = ({
   className,
   ...props
 }) => {
-  return <div className={`${labelVariants({ invalid, hasValue, className })}`} {...props} />;
+  return <div className={labelVariants({ invalid, hasValue, className })} {...props} />;
 };

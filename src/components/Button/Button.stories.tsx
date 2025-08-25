@@ -131,3 +131,17 @@ export const WithFullWidth: Story = {
     </div>
   ),
 };
+export const LikeInline: Story = {
+  render: () => (
+    <div>
+      <Button variant="primary">
+        Primary
+      </Button>
+      text
+      <Button asChild>
+        <a href="www.google.com">Click me</a>
+      </Button>
+      text again
+    </div>
+  ),
+};

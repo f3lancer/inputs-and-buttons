@@ -3,10 +3,10 @@
 exports[`Select > matches snapshot — default state 1`] = `
 <div>
   <div
-    class="relative inline"
+    class="relative inline-block"
   >
     <button
-      class="class-select h-controllg bg-grey rounded-xl flex flex-col border px-4 py-1.5 pt-1.5 pb-2.5 text-left cursor-pointer transition-all relative w-fit pr-12 border-grey }"
+      class="class-select h-controllg bg-grey rounded-xl flex flex-col border  px-4 py-1.5 pt-1.5 pb-2.5 text-left cursor-pointer transition-all relative w-fit pr-12 border-grey [box-shadow:0_0_0_1px_var(--color-grey)]"
       tabindex="0"
     >
       <div
@@ -15,6 +15,12 @@ peer-focus:text-blue peer-focus:text-[11px] peer-focus:top-1 peer-focus:-transla
       >
         Choose option
       </div>
+      <span
+        aria-hidden="true"
+        class="font-normal text-[11px] h-0 opacity-0 invisible pointer-events-none select-none mr-[-32px]"
+      >
+        Choose option
+      </span>
       <div
         class="font-display font-normal text-base leading-[150%] text-black mt-auto"
       />
@@ -49,10 +55,10 @@ peer-focus:text-blue peer-focus:text-[11px] peer-focus:top-1 peer-focus:-transla
 exports[`Select > matches snapshot — open dropdown 1`] = `
 <div>
   <div
-    class="relative inline"
+    class="relative inline-block"
   >
     <button
-      class="class-select h-controllg bg-grey rounded-xl flex flex-col border px-4 py-1.5 pt-1.5 pb-2.5 text-left cursor-pointer transition-all relative w-fit pr-12 [box-shadow:0_0_0_1px_blue] border-blue }"
+      class="class-select h-controllg bg-grey rounded-xl flex flex-col border  px-4 py-1.5 pt-1.5 pb-2.5 text-left cursor-pointer transition-all relative w-fit pr-12 border-blue [box-shadow:0_0_0_1px_var(--color-blue)]"
       tabindex="0"
     >
       <div
@@ -61,6 +67,12 @@ peer-focus:text-blue peer-focus:text-[11px] peer-focus:top-1 peer-focus:-transla
       >
         Choose option
       </div>
+      <span
+        aria-hidden="true"
+        class="font-normal text-[11px] h-0 opacity-0 invisible pointer-events-none select-none mr-[-32px]"
+      >
+        Choose option
+      </span>
       <div
         class="font-display font-normal text-base leading-[150%] text-black mt-auto"
       />
@@ -89,20 +101,20 @@ peer-focus:text-blue peer-focus:text-[11px] peer-focus:top-1 peer-focus:-transla
       class="absolute bottom-[-10px] w-full"
     >
       <div
-        class="py-1 px-2 border border-grey absolute z-[10] rounded-xl bg-white w-full"
+        class="py-1 px-2 border border-grey absolute z-[10] rounded-xl bg-white w-max"
       >
         <div
-          class="font-display text-[14px] cursor-pointer h-controlsm flex items-center px-2 transition duration-300 rounded-xl hover:bg-grey"
+          class="font-display w-full text-[14px] cursor-pointer h-controlsm flex items-center px-2 transition duration-300 rounded-xl hover:bg-grey"
         >
           Option 1
         </div>
         <div
-          class="font-display text-[14px] cursor-pointer h-controlsm flex items-center px-2 transition duration-300 rounded-xl hover:bg-grey"
+          class="font-display w-full text-[14px] cursor-pointer h-controlsm flex items-center px-2 transition duration-300 rounded-xl hover:bg-grey"
         >
           Option 2
         </div>
         <div
-          class="font-display text-[14px] cursor-pointer h-controlsm flex items-center px-2 transition duration-300 rounded-xl hover:bg-grey"
+          class="font-display w-full text-[14px] cursor-pointer h-controlsm flex items-center px-2 transition duration-300 rounded-xl hover:bg-grey"
         >
           Option 3
         </div>
@@ -118,10 +130,10 @@ peer-focus:text-blue peer-focus:text-[11px] peer-focus:top-1 peer-focus:-transla
 exports[`Select > matches snapshot — selected option 1`] = `
 <div>
   <div
-    class="relative inline"
+    class="relative inline-block"
   >
     <button
-      class="class-select h-controllg bg-grey rounded-xl flex flex-col border px-4 py-1.5 pt-1.5 pb-2.5 text-left cursor-pointer transition-all relative w-fit pr-12 [box-shadow:0_0_0_1px_blue] border-blue }"
+      class="class-select h-controllg bg-grey rounded-xl flex flex-col border  px-4 py-1.5 pt-1.5 pb-2.5 text-left cursor-pointer transition-all relative w-fit pr-12 border-blue [box-shadow:0_0_0_1px_var(--color-blue)]"
       tabindex="0"
     >
       <div
@@ -130,6 +142,12 @@ peer-focus:text-blue peer-focus:text-[11px] peer-focus:top-1 peer-focus:-transla
       >
         Choose option
       </div>
+      <span
+        aria-hidden="true"
+        class="font-normal text-[11px] h-0 opacity-0 invisible pointer-events-none select-none mr-[-32px]"
+      >
+        Choose option
+      </span>
       <div
         class="font-display font-normal text-base leading-[150%] text-black mt-auto"
       >
@@ -160,20 +178,20 @@ peer-focus:text-blue peer-focus:text-[11px] peer-focus:top-1 peer-focus:-transla
       class="absolute bottom-[-10px] w-full"
     >
       <div
-        class="py-1 px-2 border border-grey absolute z-[10] rounded-xl bg-white w-full"
+        class="py-1 px-2 border border-grey absolute z-[10] rounded-xl bg-white w-max"
       >
         <div
-          class="font-display text-[14px] cursor-pointer h-controlsm flex items-center px-2 transition duration-300 rounded-xl hover:bg-grey"
+          class="font-display w-full text-[14px] cursor-pointer h-controlsm flex items-center px-2 transition duration-300 rounded-xl hover:bg-grey"
         >
           Option 1
         </div>
         <div
-          class="font-display text-[14px] cursor-pointer h-controlsm flex items-center px-2 transition duration-300 rounded-xl hover:bg-grey"
+          class="font-display w-full text-[14px] cursor-pointer h-controlsm flex items-center px-2 transition duration-300 rounded-xl hover:bg-grey"
         >
           Option 2
         </div>
         <div
-          class="font-display text-[14px] cursor-pointer h-controlsm flex items-center px-2 transition duration-300 rounded-xl hover:bg-grey"
+          class="font-display w-full text-[14px] cursor-pointer h-controlsm flex items-center px-2 transition duration-300 rounded-xl hover:bg-grey"
         >
           Option 3
         </div>

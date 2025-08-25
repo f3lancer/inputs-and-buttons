@@ -6,14 +6,31 @@ import { useClickOutside } from "../../hooks/useClickOutside";
 import { Label } from "../Label";
 
 const buttonVariants = cva(
-  "class-select h-controllg bg-grey rounded-xl flex flex-col border px-4 py-1.5 pt-1.5 pb-2.5 text-left cursor-pointer transition-all relative w-fit pr-12",
+  "class-select h-controllg bg-grey rounded-xl flex flex-col border  px-4 py-1.5 pt-1.5 pb-2.5 text-left cursor-pointer transition-all relative w-fit pr-12",
   {
     variants: {
       open: {
-        true: "[box-shadow:0_0_0_1px_blue] border-blue",
-        false: "border-grey",
+        true: "",
+        false: "",
+      },
+      invalid: {
+        true: "border-red shadow-[0_0_0_1px_var(--color-red)]",
+        false: "",
       },
     },
+    compoundVariants: [
+      {
+        open: true,
+        invalid: false,
+        class: "border-blue [box-shadow:0_0_0_1px_var(--color-blue)]",
+      },
+      {
+        open: false,
+        invalid: false,
+        class: "border-grey [box-shadow:0_0_0_1px_var(--color-grey)]",
+      },
+
+    ],
     defaultVariants: {
       open: false,
     },
@@ -76,14 +93,17 @@ export const Select: React.FC<SelectProps> = ({
   const rootRef = useRef<HTMLDivElement>(null);
   useClickOutside(rootRef, () => setIsOpen(false));
 
+  console.log("selectedOption", selectedOption);
+
   return (
-    <div ref={rootRef} className="relative inline">
+    <div ref={rootRef} className="relative inline-block">
       <button
-        className={`${buttonVariants({ open: isOpen, className })} }`}
+        className={buttonVariants({ open: isOpen, invalid, className })}
         onClick={() => setIsOpen(prev => !prev)}
         tabIndex={0}
       >
         {label && <Label invalid={invalid}>{label}</Label>}
+        {label && <span aria-hidden="true" className="font-normal text-[11px] h-0 opacity-0 invisible pointer-events-none select-none mr-[-32px]">{label}</span>}
         <div className="font-display font-normal text-base leading-[150%] text-black mt-auto">
           {selectedOption?.label}
         </div>
@@ -91,11 +111,11 @@ export const Select: React.FC<SelectProps> = ({
       </button>
       {isOpen && (
         <div className="absolute bottom-[-10px] w-full">
-          <div className="py-1 px-2 border border-grey absolute z-[10] rounded-xl bg-white w-full">
+          <div className="py-1 px-2 border border-grey absolute z-[10] rounded-xl bg-white w-max">
             {options.map(opt => (
               <div
                 key={opt.value}
-                className="font-display text-[14px] cursor-pointer h-controlsm flex items-center px-2 transition duration-300 rounded-xl hover:bg-grey"
+                className="font-display w-full text-[14px] cursor-pointer h-controlsm flex items-center px-2 transition duration-300 rounded-xl hover:bg-grey"
                 onClick={() => {
                   if (value === undefined) {
                     setInternalValue(opt.value);

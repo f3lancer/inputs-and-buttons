@@ -61,3 +61,12 @@ export const WithFullWidth: Story = {
     className: "w-full",
   },
 };
+
+export const LikeInline: Story = {
+  render: () => (
+    <>
+      <Input name="name" label="name" defaultValue="John Doe" />
+      text
+    </>
+  ),
+};

@@ -12,6 +12,7 @@ const meta: Meta<typeof Select> = {
       { value: "1", label: "Option 1" },
       { value: "2", label: "Option 2" },
       { value: "3", label: "Option 3" },
+      { value: "4", label: "choose the long  word" },
     ],
   },
 };
@@ -83,6 +84,25 @@ export const WithTextBelowSelect: Story = {
         <p>Some text below the select</p>
         <p>Some text below the select</p>
       </div>
+    </div>
+  ),
+  args: {
+    label: "Choose an option",
+    defaultValue: "1",
+  },
+};
+export const LikeInline: Story = {
+  render: args => (
+    <div className="">
+      <Select
+        {...args}
+        options={[
+          { value: "1", label: "Option 1" },
+          { value: "2", label: "Option 2" },
+          { value: "3", label: "Option 3" },
+        ]}
+      />
+      text
     </div>
   ),
   args: {

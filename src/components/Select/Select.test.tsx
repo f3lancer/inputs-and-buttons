@@ -16,7 +16,7 @@ describe("Select", () => {
 
   it("renders label and placeholder", () => {
     render(<Select options={options} label={label} value={placeholder} />);
-    expect(screen.getByText(label)).not.toBeNull();
+    expect(screen.getByRole("button", { name: label })).not.toBeNull();
   });
   it("opens options on click and selects an option", async () => {
     let selected = "";
@@ -35,7 +35,7 @@ describe("Select", () => {
 
     expect(screen.queryByText("Option 2")).toBeNull();
 
-    const trigger = screen.getByText(label);
+    const trigger = screen.getByRole("button", { name: label });
     await userEvent.click(trigger);
 
     expect(screen.getByText("Option 2")).not.toBeNull();
@@ -65,7 +65,7 @@ describe("Select", () => {
     const { container } = render(
       <Select options={options} label={label} value="" />,
     );
-    const trigger = screen.getByText(label);
+    const trigger = screen.getByRole("button", { name: label });
     await userEvent.click(trigger);
     expect(container).toMatchSnapshot();
   });
@@ -85,7 +85,8 @@ describe("Select", () => {
       />,
     );
 
-    const trigger = screen.getByText(label);
+    // const trigger = screen.getByText(label);
+    const trigger = screen.getByRole("button", { name: label });
 
     fireEvent.click(trigger);
     fireEvent.mouseDown(screen.getByText("Option 2"));
