@@ -1,0 +1,24 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as FormsDemo from "./Forms.stories";
+
+import { ControlledForm, UncontrolledForm } from "./Forms.stories";
+
+
+<Meta of={FormsDemo} />
+
+# Showcase: Controlled vs Uncontrolled Inputs
+
+---
+## Controlled
+<div className="sb-unstyled">
+    <ControlledForm />
+</div>
+
+---
+## Uncontrolled
+<div className="sb-unstyled">
+    <UncontrolledForm />
+</div>
+---
+
+

@@ -1,0 +1,112 @@
+// src/components/Select/Select.stories.tsx
+import type { Meta, StoryObj } from "@storybook/react-vite";
+
+import { Select } from "./Select";
+
+const meta: Meta<typeof Select> = {
+  title: "Components/Select",
+  component: Select,
+  args: {
+    options: [
+      { value: "", label: "Choose" },
+      { value: "1", label: "Option 1" },
+      { value: "2", label: "Option 2" },
+      { value: "3", label: "Option 3" },
+      { value: "4", label: "choose the long  word" },
+    ],
+  },
+};
+
+export default meta;
+
+type Story = StoryObj<typeof Select>;
+
+export const WithLabel: Story = {
+  args: {
+    label: "Choose an option",
+    defaultValue: "1",
+  },
+};
+
+export const WithoutLabel: Story = {
+  args: {
+    defaultValue: "1",
+  },
+};
+
+export const Invalid: Story = {
+  args: {
+    label: "Choose an option",
+    invalid: true,
+    defaultValue: "1",
+  },
+};
+
+export const Predefined: Story = {
+  args: {
+    label: "Choose an option",
+    defaultValue: "1",
+  },
+};
+
+export const WithDefaultValue: Story = {
+  args: {
+    label: "Choose an option",
+    defaultValue: "red",
+  },
+};
+
+export const WithFullWidth: Story = {
+  args: {
+    label: "Choose an option",
+    // defaultValue: "1",
+    className: "w-full",
+  },
+};
+export const WithTextBelowSelect: Story = {
+  render: args => (
+    <div className="flex flex-col gap-4">
+      <Select
+        {...args}
+        options={[
+          { value: "1", label: "Option 1" },
+          { value: "2", label: "Option 2" },
+          { value: "3", label: "Option 3" },
+        ]}
+      />
+      <div className="text-sm text-gray-600">
+        <p>Some text below the select</p>
+        <p>Some text below the select</p>
+        <p>Some text below the select</p>
+        <p>Some text below the select</p>
+        <p>Some text below the select</p>
+        <p>Some text below the select</p>
+        <p>Some text below the select</p>
+        <p>Some text below the select</p>
+      </div>
+    </div>
+  ),
+  args: {
+    label: "Choose an option",
+    defaultValue: "1",
+  },
+};
+export const LikeInline: Story = {
+  render: args => (
+    <div className="">
+      <Select
+        {...args}
+        options={[
+          { value: "1", label: "Option 1" },
+          { value: "2", label: "Option 2" },
+          { value: "3", label: "Option 3" },
+        ]}
+      />
+      text
+    </div>
+  ),
+  args: {
+    label: "Choose an option",
+    defaultValue: "1",
+  },
+};

@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+    "jsx": "preserve",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+     "baseUrl": ".", 
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["src", "**/*.mdx"]
+}
